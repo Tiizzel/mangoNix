@@ -61,8 +61,8 @@ Open a terminal in your fresh install and clone this repository into your home d
 nix-shell -p git
 
 # Clone into ~/mangoNix (required path for dotfile symlinks)
-git clone https://github.com/Tiizzel/mangoNix.git ~/mangoNix
-# Alternatively, via GitLab: git clone https://gitlab.com/Tiizzel/mangonix.git ~/mangoNix
+git clone https://gitlab.com/Tiizzel/mangoNix.git ~/mangoNix
+# Alternatively, via GitHub: git clone https://github.com/Tiizzel/mangoNix.git ~/mangoNix
 cd ~/mangoNix
 ```
 
