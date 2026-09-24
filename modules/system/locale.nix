@@ -1,6 +1,6 @@
 {
-  flake.aspects.base.nixos = { ... }: {
-    time.timeZone = "Europe/Berlin";
+  flake.aspects.base.nixos = { config, ... }: {
+    time.timeZone = config.var.timezone;
     i18n.defaultLocale = "en_GB.UTF-8";
     i18n.extraLocaleSettings = {
       LC_ADDRESS = "de_DE.UTF-8";
@@ -13,6 +13,6 @@
       LC_TELEPHONE = "de_DE.UTF-8";
       LC_TIME = "de_DE.UTF-8";
     };
-    console.keyMap = "de";
+    console.keyMap = config.var.keyboardLayout;
   };
 }
