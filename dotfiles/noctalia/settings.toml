@@ -1,0 +1,110 @@
+config_version = 14
+
+[bar.default]
+capsule = true
+capsule_border = "primary"
+end = [ "tray", "notifications", "clipboard", "bluetooth", "network", "volume", "control-center", "session" ]
+margin_ends = 1280
+start = [ "launcher", "wallpaper", "workspaces", "media" ]
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 2560.0
+    cy = 1258.0
+    output = "DP-1"
+    placement_height = 1440.0
+    placement_width = 5120.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugins]
+enabled = [ "noctalia/wallhaven" ]
+
+[shell]
+app_icon_colorize = true
+font_family = "JetBrainsMono Nerd Font Mono"
+
+    [shell.panel]
+    clipboard_position = "auto"
+    open_near_click_clipboard = true
+    open_near_click_launcher = true
+    open_near_click_wallpaper = true
+    shadow = true
+
+[theme]
+builtin = "Noctalia"
+community_palette = "Oxocarbon"
+custom_palette = "wallhaven-0w2xpq-mc"
+mode = "dark"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "ghostty", "kcolorscheme", "kitty", "mango", "qt" ]
+    community_ids = [
+        "antigravity",
+        "claude-code",
+        "opencode",
+        "spicetify",
+        "brave",
+        "pywalfox",
+        "zen-browser",
+        "discord",
+        "gimp",
+        "libreoffice",
+        "neovim",
+        "obsidian",
+        "heroiclauncher",
+        "prismlauncher",
+        "steam",
+        "fuzzel",
+        "fastfetch",
+        "papirus-icons",
+        "bat",
+        "fzf",
+        "lazygit",
+        "yazi"
+    ]
+
+[wallpaper.default]
+path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+
+[wallpaper.last]
+path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+
+[wallpaper.monitors.DP-1]
+path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+
+[widget.clock]
+font_weight = 800
+
+[widget.launcher]
+color = "primary"
+custom_image_colorize = true
+glyph = "snowflake"

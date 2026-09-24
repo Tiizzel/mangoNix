@@ -1,0 +1,54 @@
+# Nix build artifacts
+result
+result-*
+
+# Direnv
+.direnv/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets (sops)
+*.age
+secrets/
+
+# SQLite databases & journals (everywhere)
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+
+# Zen Browser - ignore everything except config files
+# We whitelist only profiles.ini, user.js, and chrome CSS
+dotfiles/zen-browser/*
+!dotfiles/zen-browser/profiles.ini
+!dotfiles/zen-browser/user.js
+!dotfiles/zen-browser/chrome/
+!dotfiles/zen-browser/chrome/userChrome.css
+!dotfiles/zen-browser/chrome/userContent.css
+
+# Antigravity IDE state
+dotfiles/antigravity-ide/state/
+dotfiles/antigravity-ide/logs/
+dotfiles/antigravity-ide/CachedData/
+dotfiles/antigravity-ide/CachedExtensions/
+dotfiles/antigravity-ide/CachedProfilesData/
+dotfiles/antigravity-ide/User/History/
+dotfiles/antigravity-ide/User/workspaceStorage/
+dotfiles/antigravity-ide/User/globalStorage/
+
+# Binary / compressed files
+*.jsonlz4
+*.baklz4
+
+# Nix flake lock is tracked intentionally

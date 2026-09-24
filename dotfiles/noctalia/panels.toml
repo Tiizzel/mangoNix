@@ -1,0 +1,29 @@
+# Noctalia Panels & Surfaces Configuration
+# Documentation: https://docs.noctalia.dev/noctalia/launcher/ and https://docs.noctalia.dev/noctalia/control-center/
+# MangoWM Note: Disable panel shadows to prevent double-shadowing with compositor.
+
+[shell.panel]
+borders = true
+shadow = true
+open_near_click_clipboard = true
+open_near_click_launcher = true
+open_near_click_wallpaper = true
+
+# Panel Placements
+launcher_placement = "floating"
+launcher_position = "center"
+
+clipboard_placement = "floating"
+clipboard_position = "auto"
+
+control_center_placement = "attached"
+control_center_position = "auto"
+
+session_placement = "attached"
+session_position = "auto"
+
+wallpaper_placement = "attached"
+wallpaper_position = "auto"
+
+polkit_placement = "floating"
+polkit_position = "center"

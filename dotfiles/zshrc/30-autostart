@@ -1,0 +1,40 @@
+# -----------------------------------------------------
+# AUTOSTART
+# -----------------------------------------------------
+
+finder() {
+    local list selected type_icon path_val
+    list=$(find -L . -maxdepth 4 -printf "%y %p\n" 2>/dev/null | awk '
+        $1 == "d" { print " " $2 }
+        $1 == "f" { print "󰈚 " $2 }
+        $1 == "l" { print " " $2 }
+    ' | grep -v " \./$")
+
+    selected=$(echo "$list" | fzf \
+        --style full \
+        --height 50% \
+        --layout reverse \
+        --border \
+        --prompt "🔍 Finder: " \
+        --with-nth 2..)
+
+    [ -z "$selected" ] && return 0
+
+    type_icon=$(echo "$selected" | cut -d' ' -f1)
+    path_val=$(echo "$selected" | cut -d' ' -f2-)
+
+    if [ "$type_icon" = "" ]; then
+        cd "$path_val" && ls
+    else
+        ${EDITOR:-nano} "$path_val"
+    fi
+}
+
+# -----------------------------------------------------
+# Fastfetch
+# -----------------------------------------------------
+if [[ $(tty) == *"pts"* ]]; then
+    if [ ! -f $HOME/.config/fastfetch/hide-fastfetch ]; then
+        fastfetch
+    fi
+fi

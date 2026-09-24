@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+  <action>
+    <icon>utilities-terminal</icon>
+    <name>Open in Ghostty</name>
+    <submenu></submenu>
+    <unique-id>1700000000000001-1</unique-id>
+    <command>ghostty --working-directory=%f</command>
+    <description>Open terminal emulator in current folder</description>
+    <range></range>
+    <patterns>*</patterns>
+    <directories/>
+  </action>
+  <action>
+    <icon>utilities-terminal</icon>
+    <name>Open in Yazi</name>
+    <submenu></submenu>
+    <unique-id>1700000000000002-2</unique-id>
+    <command>ghostty -e yazi %f</command>
+    <description>Open folder in Yazi terminal file manager</description>
+    <range></range>
+    <patterns>*</patterns>
+    <directories/>
+  </action>
+  <action>
+    <icon>antigravity-ide</icon>
+    <name>Open in Antigravity IDE</name>
+    <submenu></submenu>
+    <unique-id>1700000000000003-3</unique-id>
+    <command>antigravity-ide %f</command>
+    <description>Open in Antigravity Code Editor</description>
+    <range></range>
+    <patterns>*</patterns>
+    <directories/>
+    <other-files/>
+    <text-files/>
+  </action>
+  <action>
+    <icon>preferences-desktop-wallpaper</icon>
+    <name>Set as Wallpaper (Noctalia)</name>
+    <submenu></submenu>
+    <unique-id>1700000000000004-4</unique-id>
+    <command>noctalia msg wallpaper-set %f</command>
+    <description>Set image as desktop wallpaper using Noctalia</description>
+    <range></range>
+    <patterns>*.png;*.jpg;*.jpeg;*.webp;*.avif</patterns>
+    <image-files/>
+  </action>
+</actions>

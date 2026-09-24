@@ -1,0 +1,27 @@
+# Noctalia Dock Configuration
+# Documentation: https://docs.noctalia.dev/noctalia/dock/
+# MangoWM Note: Disable dock shadows to avoid compositor layer shadow conflicts.
+
+[dock]
+enabled = false
+position = "bottom"
+layer = "top"
+icon_size = 48
+radius = 16
+magnification = true
+magnification_scale = 1.45
+item_spacing = 8
+margin_edge = 8
+
+# MangoWM Compositor Compatibility
+shadow = false
+
+# Pinned Applications (Installed applications only)
+pinned = [
+    "kitty",
+    "ghostty",
+    "zen-beta",
+    "thunar",
+    "antigravity-ide",
+    "pavucontrol"
+]

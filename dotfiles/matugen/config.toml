@@ -1,0 +1,31 @@
+# Matugen Configuration
+# Documentation: https://github.com/InioX/matugen and https://deepwiki.com/InioX/matugen
+
+[config]
+reload_apps = false
+source_color_index = 0
+
+[templates.mango_colors]
+input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/mango-colors.conf"
+output_path = "/home/tiizzel/mangoNix/dotfiles/mango/cfg/colors.conf"
+post_hook = "mmsg dispatch reload_config"
+
+[templates.ohmyposh]
+input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/zen.toml"
+output_path = "/home/tiizzel/mangoNix/dotfiles/ohmyposh/zen.toml"
+
+[templates.sddm]
+input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/sddm-theme.conf"
+output_path = "/home/tiizzel/mangoNix/dotfiles/sddm/theme.conf"
+
+[templates.colors_sh]
+input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/colors.sh"
+output_path = "/home/tiizzel/mangoNix/dotfiles/matugen/colors.sh"
+
+[templates.colors_json]
+input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/colors.json"
+output_path = "/home/tiizzel/mangoNix/dotfiles/matugen/colors.json"
+
+[templates.colors_css]
+input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/colors.css"
+output_path = "/home/tiizzel/mangoNix/dotfiles/matugen/colors.css"

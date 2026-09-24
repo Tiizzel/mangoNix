@@ -1,0 +1,50 @@
+# Yazi Theme Configuration (Catppuccin Mocha inspired dark theme)
+# Documentation: https://yazi-rs.github.io/docs/configuration/theme
+
+[mgr]
+cwd = { fg = "#89b4fa" }
+hovered = { fg = "#1e1e2e", bg = "#cba6f7", bold = true }
+preview_hovered = { underline = true }
+
+# Find
+find_keyword = { fg = "#f9e2af", bold = true, italic = true }
+find_position = { fg = "#f5c2e7", bold = true }
+
+# Marker
+marker_copied = { fg = "#a6e3a1", bg = "#a6e3a1" }
+marker_cut = { fg = "#f38ba8", bg = "#f38ba8" }
+marker_selected = { fg = "#89b4fa", bg = "#89b4fa" }
+
+# Tab
+tab_active = { fg = "#1e1e2e", bg = "#cba6f7", bold = true }
+tab_inactive = { fg = "#cdd6f4", bg = "#313244" }
+tab_width = 1
+
+# Border
+border_style = { fg = "#585b70" }
+
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "#313244", bg = "#313244" }
+
+# Mode
+mode_normal = { fg = "#1e1e2e", bg = "#89b4fa", bold = true }
+mode_select = { fg = "#1e1e2e", bg = "#a6e3a1", bold = true }
+mode_unset = { fg = "#1e1e2e", bg = "#f38ba8", bold = true }
+
+# Progress
+progress_label = { fg = "#ffffff", bold = true }
+progress_normal = { fg = "#89b4fa", bg = "#313244" }
+progress_error = { fg = "#f38ba8", bg = "#313244" }
+
+# Permissions
+permissions_t = { fg = "#89b4fa" }
+permissions_r = { fg = "#f9e2af" }
+permissions_w = { fg = "#f38ba8" }
+permissions_x = { fg = "#a6e3a1" }
+permissions_s = { fg = "#7f849c" }
+
+[flavor]
+dark = "noctalia"
+light = "noctalia"

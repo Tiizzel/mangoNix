@@ -1,0 +1,23 @@
+# Noctalia Built-in Services Configuration
+# Documentation: https://docs.noctalia.dev/noctalia/services/audio/
+
+[audio]
+enable_sounds = false
+sound_volume = 0.5
+enable_overdrive = false
+
+[brightness]
+minimum_brightness = 0.05
+sync_all_monitors = false
+
+[battery]
+warning_threshold = 15
+
+[nightlight]
+temperature_day = 6500
+temperature_night = 4000
+
+[osd]
+enabled = true
+position = "bottom_center"
+border = true

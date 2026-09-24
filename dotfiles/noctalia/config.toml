@@ -1,0 +1,70 @@
+# Noctalia Core Configuration
+# Documentation: https://docs.noctalia.dev/noctalia/configuration/
+
+[theme]
+mode = "dark"
+source = "wallpaper"
+builtin = "Noctalia"
+community_palette = "Oxocarbon"
+custom_palette = "wallhaven-0w2xpq-mc"
+wallpaper_scheme = "m3-content"
+shell_mode = "follow"
+
+[theme.templates]
+builtin_ids = [ "btop", "gtk3", "gtk4", "ghostty", "kcolorscheme", "kitty", "mango", "qt" ]
+community_ids = [
+    "antigravity",
+    "claude-code",
+    "opencode",
+    "spicetify",
+    "brave",
+    "pywalfox",
+    "zen-browser",
+    "discord",
+    "gimp",
+    "libreoffice",
+    "neovim",
+    "obsidian",
+    "heroiclauncher",
+    "prismlauncher",
+    "steam",
+    "fuzzel",
+    "fastfetch",
+    "papirus-icons",
+    "bat",
+    "fzf",
+    "lazygit",
+    "yazi"
+]
+
+[plugins]
+enabled = [ "noctalia/wallhaven" ]
+
+[shell]
+app_icon_colorize = true
+font_family = "JetBrainsMono Nerd Font Mono"
+corner_radius_scale = 1.0
+button_borders = true
+card_borders = true
+input_borders = true
+popup_borders = true
+popup_shadows = false
+time_format = "{:%H:%M}"
+date_format = "%A, %d. %B"
+
+clipboard_enabled = true
+clipboard_history_max_entries = 100
+clipboard_keep_from_closed_apps = true
+
+[wallpaper]
+enabled = true
+fill_mode = "crop"
+
+[wallpaper.default]
+path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+
+[wallpaper.last]
+path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+
+[wallpaper.monitors.DP-1]
+path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"

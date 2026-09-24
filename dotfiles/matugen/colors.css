@@ -1,0 +1,17 @@
+:root {
+  --source-color: #7ea657;
+  --primary: #afd18c;
+  --on-primary: #1d3703;
+  --primary-container: #334e18;
+  --secondary: #bfcbae;
+  --on-secondary: #29341f;
+  --tertiary: #a0cfcd;
+  --on-tertiary: #003735;
+  --surface: #11140e;
+  --on-surface: #e2e3d9;
+  --surface-container: #1e211a;
+  --background: #11140e;
+  --on-background: #e2e3d9;
+  --outline: #8e9285;
+  --error: #ffb4ab;
+}

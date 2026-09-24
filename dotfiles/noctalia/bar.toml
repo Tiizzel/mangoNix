@@ -1,0 +1,54 @@
+# Noctalia Status Bar Configuration
+# Documentation: https://docs.noctalia.dev/noctalia/bar/
+# MangoWM Note: Disable shadows here so Mango compositor handles blur/shadows without conflicts.
+
+[bar]
+order = [ "default" ]
+
+[bar.default]
+enabled = true
+capsule = true
+capsule_border = "primary"
+position = "top"
+layer = "top"
+thickness = 34
+margin_ends = 1280
+margin_edge = 6
+padding = 12
+widget_spacing = 6
+radius = 12
+
+# MangoWM Compositor Compatibility
+shadow = false
+contact_shadow = false
+
+# Widgets Layout
+start = [
+    "launcher",
+    "wallpaper",
+    "workspaces",
+    "media"
+]
+
+center = [
+    "clock"
+]
+
+end = [
+    "tray",
+    "notifications",
+    "clipboard",
+    "bluetooth",
+    "network",
+    "volume",
+    "control-center",
+    "session"
+]
+
+[widget.clock]
+font_weight = 800
+
+[widget.launcher]
+color = "primary"
+custom_image_colorize = true
+glyph = "snowflake"

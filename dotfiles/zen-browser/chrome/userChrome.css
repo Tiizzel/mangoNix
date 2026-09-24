@@ -1,0 +1,24 @@
+/* Zen Browser Custom User Chrome CSS */
+/* Clean, minimal UI tuned for MangoWM and Noctalia dark theme */
+
+:root {
+  --zen-border-radius: 8px !important;
+  --zen-dark-color-mix-base: #141218 !important;
+}
+
+/* Rounded corners on the web contents area */
+#tabbrowser-tabpanels {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+/* Hide native window buttons under tiling window manager */
+.titlebar-buttonbox-container {
+  display: none !important;
+}
+
+/* Sleek minimalist scrollbar */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: #49454f transparent !important;
+}

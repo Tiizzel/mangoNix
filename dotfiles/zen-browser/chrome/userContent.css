@@ -1,0 +1,8 @@
+/* Zen Browser Custom User Content CSS */
+
+/* Match dark theme background for new empty tabs */
+@-moz-document url("about:blank"), url("about:newtab"), url("about:home") {
+  body {
+    background-color: #141218 !important;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "source_color": "#7ea657",
+  "primary": "#afd18c",
+  "on_primary": "#1d3703",
+  "primary_container": "#334e18",
+  "secondary": "#bfcbae",
+  "on_secondary": "#29341f",
+  "tertiary": "#a0cfcd",
+  "on_tertiary": "#003735",
+  "surface": "#11140e",
+  "on_surface": "#e2e3d9",
+  "surface_container": "#1e211a",
+  "background": "#11140e",
+  "on_background": "#e2e3d9",
+  "outline": "#8e9285",
+  "error": "#ffb4ab"
+}
