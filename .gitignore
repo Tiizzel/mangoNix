@@ -18,7 +18,10 @@ Thumbs.db
 
 # Secrets (sops)
 *.age
-secrets/
+*.key
+secrets/*.decrypted*
+secrets/*raw*
+!secrets/secrets.yaml
 
 # SQLite databases & journals (everywhere)
 *.sqlite
