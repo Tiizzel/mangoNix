@@ -1,12 +1,12 @@
 {
-  flake.aspects.base.nixos = { pkgs, ... }: {
+  flake.aspects.base.nixos = { pkgs, config, ... }: {
     programs.nh = {
       enable = true;
       clean = {
         enable = true;
         extraArgs = "--keep-since 7d --keep 5";
       };
-      flake = "/home/tiizzel/mangoNix";
+      flake = config.var.dotfilesDir;
     };
 
     environment.systemPackages = with pkgs;  [
@@ -14,9 +14,9 @@
       nvd
     ];
     environment.variables = {
-      NH_FLAKE = "/home/tiizzel/mangoNix";
-      NH_OS_FLAKE = "/home/tiizzel/mangoNix";
-      NH_HOST_FLAKE = "/home/tiizzel/mangoNix"; 
+      NH_FLAKE = config.var.dotfilesDir;
+      NH_OS_FLAKE = config.var.dotfilesDir;
+      NH_HOST_FLAKE = config.var.dotfilesDir; 
     };
   };
 }

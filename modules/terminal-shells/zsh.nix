@@ -1,5 +1,5 @@
 {
-  flake.aspects.base.nixos = { pkgs, ... }: {
+  flake.aspects.base.nixos = { pkgs, config, ... }: {
     programs.zsh = {
       enable = true;
       interactiveShellInit = ''
@@ -41,13 +41,13 @@
       sv = "sudo nvim";
       v = "nvim";
       c = "clear";
-      fr = "nh os switch /home/tiizzel/mangoNix";
-      fu = "nh os switch --update /home/tiizzel/mangoNix";
+      fr = "nh os switch ${config.var.dotfilesDir}";
+      fu = "nh os switch --update ${config.var.dotfilesDir}";
     };
     environment.systemPackages = [
       pkgs.oh-my-posh
     ];
-    users.users.tiizzel.shell = pkgs.zsh;
+    users.users.${config.var.username}.shell = pkgs.zsh;
     users.defaultUserShell = pkgs.zsh;
   };
 

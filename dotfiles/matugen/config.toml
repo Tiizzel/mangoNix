@@ -6,26 +6,26 @@ reload_apps = false
 source_color_index = 0
 
 [templates.mango_colors]
-input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/mango-colors.conf"
-output_path = "/home/tiizzel/mangoNix/dotfiles/mango/cfg/colors.conf"
+input_path = "~/mangoNix/dotfiles/matugen/templates/mango-colors.conf"
+output_path = "~/mangoNix/dotfiles/mango/cfg/colors.conf"
 post_hook = "mmsg dispatch reload_config"
 
 [templates.ohmyposh]
-input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/zen.toml"
-output_path = "/home/tiizzel/mangoNix/dotfiles/ohmyposh/zen.toml"
+input_path = "~/mangoNix/dotfiles/matugen/templates/zen.toml"
+output_path = "~/mangoNix/dotfiles/ohmyposh/zen.toml"
 
 [templates.sddm]
-input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/sddm-theme.conf"
-output_path = "/home/tiizzel/mangoNix/dotfiles/sddm/theme.conf"
+input_path = "~/mangoNix/dotfiles/matugen/templates/sddm-theme.conf"
+output_path = "~/mangoNix/dotfiles/sddm/theme.conf"
 
 [templates.colors_sh]
-input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/colors.sh"
-output_path = "/home/tiizzel/mangoNix/dotfiles/matugen/colors.sh"
+input_path = "~/mangoNix/dotfiles/matugen/templates/colors.sh"
+output_path = "~/mangoNix/dotfiles/matugen/colors.sh"
 
 [templates.colors_json]
-input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/colors.json"
-output_path = "/home/tiizzel/mangoNix/dotfiles/matugen/colors.json"
+input_path = "~/mangoNix/dotfiles/matugen/templates/colors.json"
+output_path = "~/mangoNix/dotfiles/matugen/colors.json"
 
 [templates.colors_css]
-input_path = "/home/tiizzel/mangoNix/dotfiles/matugen/templates/colors.css"
-output_path = "/home/tiizzel/mangoNix/dotfiles/matugen/colors.css"
+input_path = "~/mangoNix/dotfiles/matugen/templates/colors.css"
+output_path = "~/mangoNix/dotfiles/matugen/colors.css"

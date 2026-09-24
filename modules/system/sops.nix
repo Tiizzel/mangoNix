@@ -15,8 +15,8 @@
     #   age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     #   secrets.sshAuthorizedKey = { neededForUsers = true; };
     #   secrets.githubSshKey = {
-    #     path = "/home/tiizzel/.ssh/id_ed25519";
-    #     owner = "tiizzel";
+    #     path = "/home/${config.var.username}/.ssh/id_ed25519";
+    #     owner = config.var.username;
     #     mode = "0600";
     #   };
     # };

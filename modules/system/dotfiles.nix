@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }: {
   flake.aspects.base.home = { config, ... }: let
     link = config.lib.file.mkOutOfStoreSymlink;
-    dotDir = "/home/tiizzel/mangoNix/dotfiles";
+    dotDir = "${config.home.homeDirectory}/mangoNix/dotfiles";
   in {
     home.file = {
       ".config/antigravity-ide".source = link "${dotDir}/antigravity-ide";
