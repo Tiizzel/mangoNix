@@ -11,7 +11,7 @@
       pkgs.ssh-to-age
     ];
 
-    sops = {
+    sops = lib.mkIf config.var.enableSops {
       defaultSopsFile = ../../secrets/secrets.yaml;
       defaultSopsFormat = "yaml";
       age = {

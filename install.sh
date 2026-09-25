@@ -161,14 +161,16 @@ read -r INPUT_TIMEZONE
 INPUT_TIMEZONE=${INPUT_TIMEZONE:-"$DETECTED_TIMEZONE"}
 
 echo ""
-info "SOPS Secrets: To decrypt your SSH keys and secrets automatically,"
-info "you can import your Age secret key (from ~/.config/sops/age/keys.txt)."
-question "Do you want to import your Age secret key now? [y/N]: "
+info "SOPS Secrets: If you are the owner, import your Age key to decrypt your SSH keys."
+info "If you are a new user or do not have the Age key, choose 'No' to disable SOPS."
+question "Enable SOPS secrets management? [y/N]: "
 read -r IMPORT_AGE
 IMPORT_AGE=${IMPORT_AGE:-"n"}
 
+INPUT_SOPS="false"
 AGE_KEY_CONTENT=""
 if [[ "$IMPORT_AGE" =~ ^[Yy]$ ]]; then
+    INPUT_SOPS="true"
     question "Paste your Age secret key (starts with AGE-SECRET-KEY-...): "
     read -r AGE_KEY_CONTENT
 fi
@@ -185,6 +187,7 @@ cat << EOF
   • GPU Profile:       ${INPUT_GPU}
   • Keyboard Layout:   ${INPUT_KEYMAP}
   • Timezone:          ${INPUT_TIMEZONE}
+  • SOPS Secrets:      ${INPUT_SOPS}
 EOF
 echo ""
 
@@ -270,6 +273,11 @@ cat << EOF > "$USER_CONFIG"
         default = "${INPUT_GPU}";
         description = "Primary GPU driver profile";
       };
+      enableSops = lib.mkOption {
+        type = lib.types.bool;
+        default = ${INPUT_SOPS};
+        description = "Enable SOPS encrypted secrets management";
+      };
     };
 
     config = {
@@ -307,8 +315,8 @@ if [ -f "$MANGO_INPUT" ]; then
     sed -i "s/^xkb_rules_layout = .*/xkb_rules_layout = ${INPUT_KEYMAP}/" "$MANGO_INPUT"
 fi
 
-# 4. Set up SOPS Age key if provided
-if [ -n "$AGE_KEY_CONTENT" ]; then
+# 4. Set up SOPS Age key or fallback SSH key
+if [ "$INPUT_SOPS" = "true" ] && [ -n "$AGE_KEY_CONTENT" ]; then
     info "Installing SOPS Age key for user ${INPUT_USER}..."
     USER_AGE_DIR="/home/${INPUT_USER}/.config/sops/age"
     mkdir -p "$USER_AGE_DIR"
@@ -318,6 +326,20 @@ if [ -n "$AGE_KEY_CONTENT" ]; then
         run_sudo chown -R "${TARGET_USER}:" "/home/${INPUT_USER}/.config/sops" 2>/dev/null || true
     fi
     success "Age key installed at ${USER_AGE_DIR}/keys.txt."
+elif [ "$INPUT_SOPS" = "false" ]; then
+    USER_SSH_DIR="/home/${INPUT_USER}/.ssh"
+    if [ ! -f "${USER_SSH_DIR}/id_ed25519" ]; then
+        info "Generating a fresh SSH key for ${INPUT_USER}..."
+        mkdir -p "$USER_SSH_DIR"
+        ssh-keygen -t ed25519 -C "${INPUT_USER}@${INPUT_HOST}" -f "${USER_SSH_DIR}/id_ed25519" -N ""
+        chmod 700 "$USER_SSH_DIR"
+        chmod 600 "${USER_SSH_DIR}/id_ed25519"
+        chmod 644 "${USER_SSH_DIR}/id_ed25519.pub"
+        if [ -n "${TARGET_USER}" ] && [ "${TARGET_USER}" != "root" ]; then
+            run_sudo chown -R "${TARGET_USER}:" "$USER_SSH_DIR" 2>/dev/null || true
+        fi
+        success "New SSH key generated at ${USER_SSH_DIR}/id_ed25519."
+    fi
 fi
 
 # 5. Stage git files so Flakes recognizes new and modified files

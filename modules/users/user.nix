@@ -36,6 +36,11 @@
         default = "amd";
         description = "Primary GPU driver profile";
       };
+      enableSops = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Enable SOPS encrypted secrets management";
+      };
     };
 
     config = {
