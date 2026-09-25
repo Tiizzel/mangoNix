@@ -160,6 +160,19 @@ question "System Timezone [${DETECTED_TIMEZONE}]: "
 read -r INPUT_TIMEZONE
 INPUT_TIMEZONE=${INPUT_TIMEZONE:-"$DETECTED_TIMEZONE"}
 
+echo ""
+info "SOPS Secrets: To decrypt your SSH keys and secrets automatically,"
+info "you can import your Age secret key (from ~/.config/sops/age/keys.txt)."
+question "Do you want to import your Age secret key now? [y/N]: "
+read -r IMPORT_AGE
+IMPORT_AGE=${IMPORT_AGE:-"n"}
+
+AGE_KEY_CONTENT=""
+if [[ "$IMPORT_AGE" =~ ^[Yy]$ ]]; then
+    question "Paste your Age secret key (starts with AGE-SECRET-KEY-...): "
+    read -r AGE_KEY_CONTENT
+fi
+
 # ------------------------------------------------------------------------------
 # 4. Summary Confirmation
 # ------------------------------------------------------------------------------
@@ -294,12 +307,25 @@ if [ -f "$MANGO_INPUT" ]; then
     sed -i "s/^xkb_rules_layout = .*/xkb_rules_layout = ${INPUT_KEYMAP}/" "$MANGO_INPUT"
 fi
 
-# 4. Stage git files so Flakes recognizes new and modified files
+# 4. Set up SOPS Age key if provided
+if [ -n "$AGE_KEY_CONTENT" ]; then
+    info "Installing SOPS Age key for user ${INPUT_USER}..."
+    USER_AGE_DIR="/home/${INPUT_USER}/.config/sops/age"
+    mkdir -p "$USER_AGE_DIR"
+    echo "$AGE_KEY_CONTENT" > "${USER_AGE_DIR}/keys.txt"
+    chmod 600 "${USER_AGE_DIR}/keys.txt"
+    if [ -n "${TARGET_USER}" ] && [ "${TARGET_USER}" != "root" ]; then
+        run_sudo chown -R "${TARGET_USER}:" "/home/${INPUT_USER}/.config/sops" 2>/dev/null || true
+    fi
+    success "Age key installed at ${USER_AGE_DIR}/keys.txt."
+fi
+
+# 5. Stage git files so Flakes recognizes new and modified files
 info "Staging configuration changes in git..."
 git add -A
 success "All configuration files staged."
 
-# 5. Ensure file ownership
+# 6. Ensure file ownership
 if [ -n "${TARGET_USER}" ] && [ "${TARGET_USER}" != "root" ]; then
     run_sudo chown -R "${TARGET_USER}:" "$TARGET_DIR" 2>/dev/null || true
 fi
