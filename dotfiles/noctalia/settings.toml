@@ -7,6 +7,24 @@ end = [ "tray", "notifications", "clipboard", "bluetooth", "network", "volume", 
 margin_ends = 1280
 start = [ "launcher", "wallpaper", "workspaces", "media" ]
 
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 120.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 180.0
+
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
@@ -58,6 +76,41 @@ font_family = "JetBrainsMono Nerd Font Mono"
     open_near_click_wallpaper = true
     shadow = true
 
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
 [theme]
 builtin = "Noctalia"
 community_palette = "Oxocarbon"
@@ -93,13 +146,13 @@ wallpaper_scheme = "m3-content"
     ]
 
 [wallpaper.default]
-path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-49jg3x.jpg"
 
 [wallpaper.last]
-path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-49jg3x.jpg"
 
 [wallpaper.monitors.DP-1]
-path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-49jg3x.jpg"
 
 [widget.clock]
 font_weight = 800

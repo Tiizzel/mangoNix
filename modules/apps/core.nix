@@ -5,6 +5,7 @@
       jq
       wl-clipboard
       cliphist
+      fuzzel
     ];
   };
 }
