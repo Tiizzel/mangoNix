@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "NoctaliaTheme",
   "editor.fontFamily": "'JetBrainsMono Nerd Font', 'JetBrains Mono', monospace",
   "editor.fontSize": 14,
   "editor.lineHeight": 1.5,
@@ -20,5 +20,7 @@
   "terminal.integrated.fontSize": 13,
   "telemetry.telemetryLevel": "off",
   "window.titleBarStyle": "custom",
-  "window.menuBarVisibility": "compact"
+  "window.menuBarVisibility": "compact",
+  "python.languageServer": "Default",
+  "clangd.path": "/home/tiizzel/.config/Antigravity IDE/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/22.1.6/clangd_22.1.6/bin/clangd"
 }

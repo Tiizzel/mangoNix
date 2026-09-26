@@ -3,19 +3,33 @@
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      theme = "chili";
-      extraPackages = with pkgs; [
-        sddm-chili-theme
-        kdePackages.qt5compat
-        kdePackages.qtdeclarative
-        kdePackages.qtsvg
-        kdePackages.qtmultimedia
-        kdePackages.qtvirtualkeyboard
+      theme = "catppuccin-mocha-mauve";
+      extraPackages = with pkgs.kdePackages; [
+        qtsvg
+        qtdeclarative
       ];
+      settings = {
+        Theme = {
+          CursorTheme = "capitaine-cursors";
+          CursorSize = 24;
+        };
+        General = {
+          Numlock = "none";
+        };
+      };
     };
 
     environment.systemPackages = [
-      pkgs.sddm-chili-theme
+      (pkgs.catppuccin-sddm.override {
+        flavor = "mocha";
+        accent = "mauve";
+        font = "JetBrainsMono Nerd Font";
+        fontSize = "11";
+      })
+      pkgs.capitaine-cursors
     ];
+
+    security.pam.services.sddm.enableGnomeKeyring = true;
   };
 }
+

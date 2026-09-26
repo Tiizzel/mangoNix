@@ -8,6 +8,7 @@ result-*
 # Editor / IDE
 .vscode/
 .idea/
+.obsidian/
 *.swp
 *.swo
 *~

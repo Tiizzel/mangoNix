@@ -1,8 +1,11 @@
 # Noctalia Lockscreen Configuration
 # Documentation: https://docs.noctalia.dev/noctalia/lockscreen/
 
+[lockscreen]
+blurred_desktop = true
+
 [lockscreen_widgets]
-enabled = false
+enabled = true
 schema_version = 2
 widget_order = [ "lockscreen-login-box@DP-1" ]
 

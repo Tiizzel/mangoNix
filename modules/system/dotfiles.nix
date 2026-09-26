@@ -7,6 +7,8 @@
       ".config/antigravity-ide".source = link "${dotDir}/antigravity-ide";
       ".config/Antigravity/User/settings.json".source = link "${dotDir}/antigravity-ide/settings.json";
       ".config/Antigravity/User/keybindings.json".source = link "${dotDir}/antigravity-ide/keybindings.json";
+      ".config/Antigravity IDE/User/settings.json".source = link "${dotDir}/antigravity-ide/settings.json";
+      ".config/Antigravity IDE/User/keybindings.json".source = link "${dotDir}/antigravity-ide/keybindings.json";
       ".config/btop".source = link "${dotDir}/btop";
       ".config/fastfetch".source = link "${dotDir}/fastfetch";
       ".config/ghostty".source = link "${dotDir}/ghostty";
@@ -20,6 +22,7 @@
       ".config/sddm".source = link "${dotDir}/sddm";
       ".config/Thunar".source = link "${dotDir}/thunar";
       ".config/thunar".source = link "${dotDir}/thunar";
+      ".config/xdg-desktop-portal".source = link "${dotDir}/xdg-desktop-portal";
       ".config/yazi".source = link "${dotDir}/yazi";
       ".config/zen-browser".source = link "${dotDir}/zen-browser";
       ".config/zen".source = link "${dotDir}/zen-browser";

@@ -26,12 +26,5 @@
       NIXOS_OZONE_WL = "1";
       WLR_NO_HARDWARE_CURSORS = "1";
     };
-
-    xdg.portal = {
-      enable = true;
-      wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-      config.common.default = "*";
-    };
   };
 }

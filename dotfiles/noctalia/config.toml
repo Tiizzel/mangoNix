@@ -3,10 +3,11 @@
 
 [theme]
 mode = "dark"
+pure_black_dark = false
 source = "wallpaper"
 builtin = "Noctalia"
 community_palette = "Oxocarbon"
-custom_palette = "wallhaven-0w2xpq-mc"
+custom_palette = "wallhaven-o3r9p7-mc"
 wallpaper_scheme = "m3-content"
 shell_mode = "follow"
 
@@ -49,6 +50,7 @@ card_borders = true
 input_borders = true
 popup_borders = true
 popup_shadows = false
+settings_window_translucent = false
 time_format = "{:%H:%M}"
 date_format = "%A, %d. %B"
 
@@ -61,10 +63,10 @@ enabled = true
 fill_mode = "crop"
 
 [wallpaper.default]
-path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-o3r9p7.png"
 
 [wallpaper.last]
-path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-o3r9p7.png"
 
 [wallpaper.monitors.DP-1]
-path = "/home/tiizzel/Pictures/wallhaven-0w2xpq.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-o3r9p7.png"
