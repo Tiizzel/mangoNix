@@ -498,6 +498,19 @@ if run_sudo env NIX_CONFIG="extra-experimental-features = nix-command flakes" ni
     if id "${INPUT_USER}" &>/dev/null; then
         run_sudo chown -R "${INPUT_USER}:" "$TARGET_HOME" 2>/dev/null || true
     fi
+
+    # If SOPS is enabled, switch git remote to SSH and ensure public key matches
+    if [ "$INPUT_SOPS" = "true" ]; then
+        info "Configuring git remote to use SSH (git@github.com)..."
+        (cd "$TARGET_DIR" && git remote set-url origin git@github.com:Tiizzel/mangoNix.git 2>/dev/null || true)
+        if [ -f "${TARGET_HOME}/.ssh/id_ed25519" ]; then
+            ssh-keygen -y -f "${TARGET_HOME}/.ssh/id_ed25519" > "${TARGET_HOME}/.ssh/id_ed25519.pub" 2>/dev/null || true
+            chmod 644 "${TARGET_HOME}/.ssh/id_ed25519.pub" 2>/dev/null || true
+            if id "${INPUT_USER}" &>/dev/null; then
+                run_sudo chown "${INPUT_USER}:" "${TARGET_HOME}/.ssh/id_ed25519.pub" 2>/dev/null || true
+            fi
+        fi
+    fi
 else
     echo ""
     error "System build failed. Check the error messages above for details."
