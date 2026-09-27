@@ -3,10 +3,12 @@
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      theme = "catppuccin-mocha-mauve";
+      theme = "sddm-astronaut-theme";
       extraPackages = with pkgs.kdePackages; [
         qtsvg
         qtdeclarative
+        qtmultimedia
+        qtvirtualkeyboard
       ];
       settings = {
         Theme = {
@@ -19,13 +21,20 @@
       };
     };
 
+    systemd.tmpfiles.rules = [
+      "d /var/cache/sddm-theme 0775 ${config.var.username} sddm -"
+    ];
+
     environment.systemPackages = [
-      (pkgs.catppuccin-sddm.override {
-        flavor = "mocha";
-        accent = "mauve";
-        font = "JetBrainsMono Nerd Font";
-        fontSize = "11";
-      })
+      ((pkgs.sddm-astronaut.override {
+        embeddedTheme = "purple_leaves";
+      }).overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          chmod u+w $out/share/sddm/themes/sddm-astronaut-theme/Themes
+          ln -sf /var/cache/sddm-theme/purple_leaves.conf.user \
+            $out/share/sddm/themes/sddm-astronaut-theme/Themes/purple_leaves.conf.user
+        '';
+      }))
       pkgs.capitaine-cursors
     ];
 

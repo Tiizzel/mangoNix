@@ -15,8 +15,9 @@ input_path = "~/mangoNix/dotfiles/matugen/templates/zen.toml"
 output_path = "~/mangoNix/dotfiles/ohmyposh/zen.toml"
 
 [templates.sddm]
-input_path = "~/mangoNix/dotfiles/matugen/templates/sddm-theme.conf"
+input_path = "~/mangoNix/dotfiles/matugen/templates/sddm-astronaut.conf"
 output_path = "~/mangoNix/dotfiles/sddm/theme.conf"
+post_hook = "mkdir -p /var/cache/sddm-theme 2>/dev/null || true; cp -f '{{image}}' /var/cache/sddm-theme/current-wallpaper 2>/dev/null || true; cp -f ~/mangoNix/dotfiles/sddm/theme.conf /var/cache/sddm-theme/purple_leaves.conf.user 2>/dev/null || true"
 
 [templates.colors_sh]
 input_path = "~/mangoNix/dotfiles/matugen/templates/colors.sh"
@@ -29,3 +30,13 @@ output_path = "~/mangoNix/dotfiles/matugen/colors.json"
 [templates.colors_css]
 input_path = "~/mangoNix/dotfiles/matugen/templates/colors.css"
 output_path = "~/mangoNix/dotfiles/matugen/colors.css"
+
+[templates.openrgb_wooting]
+input_path = "~/mangoNix/dotfiles/matugen/templates/openrgb/wooting-80he.sh"
+output_path = "~/mangoNix/dotfiles/openrgb/apply-wooting-theme.sh"
+post_hook = "bash ~/mangoNix/dotfiles/openrgb/apply-wooting-theme.sh"
+
+[templates.neovim]
+input_path = "~/mangoNix/dotfiles/matugen/templates/community/neovim/matugen-template.lua"
+output_path = "~/mangoNix/dotfiles/nvim/lua/matugen.lua"
+post_hook = "pkill -SIGUSR1 nvim 2>/dev/null || true"

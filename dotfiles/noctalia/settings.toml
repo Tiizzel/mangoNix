@@ -1,11 +1,32 @@
 config_version = 14
 
 [bar.default]
+background_opacity = 0.93999997898936272
+border = "outline"
+border_width = 2.0
 capsule = true
 capsule_border = "primary"
-end = [ "tray", "notifications", "clipboard", "bluetooth", "network", "volume", "control-center", "session" ]
+capsule_fill = "on_secondary"
+end = [
+    "tray",
+    "custom/nordvpn:bar",
+    "notifications",
+    "clipboard",
+    "bluetooth",
+    "network",
+    "volume",
+    "control-center",
+    "session"
+]
 margin_ends = 1280
+shadow = true
 start = [ "launcher", "wallpaper", "workspaces", "media" ]
+
+[dock]
+enabled = false
+
+[hooks]
+wallpaper_changed = "matugen-apply"
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -31,7 +52,7 @@ blurred_desktop = true
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@DP-1" ]
+widget_order = [ "lockscreen-login-box@DP-1", "lockscreen-widget-0000000000000001" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -65,18 +86,52 @@ widget_order = [ "lockscreen-login-box@DP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 320.0
+    box_width = 544.0
+    cx = 2560.0
+    cy = 416.0
+    output = "DP-1"
+    placement_height = 1440.0
+    placement_width = 5120.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background_color = "on_secondary"
+        background_opacity = 0.75
+        background_radius = 32
+        color = "primary"
+        font_family = "JetBrainsMonoNL Nerd Font"
+
 [notification]
 background_opacity = 0.84999998100101948
 offset_x = 200
 scale = 1.2500000111758709
 
 [plugins]
-enabled = [ "noctalia/wallhaven" ]
+enabled = [ "noctalia/wallhaven", "custom/nordvpn" ]
+
+    [[plugins.source]]
+    kind = "git"
+    location = "https://github.com/noctalia-dev/official-plugins"
+    name = "official"
+
+    [[plugins.source]]
+    kind = "git"
+    location = "https://github.com/noctalia-dev/community-plugins"
+    name = "community"
+
+    [[plugins.source]]
+    kind = "path"
+    location = "/home/tiizzel/mangoNix/dotfiles/noctalia/plugins"
+    name = "local"
 
 [shell]
 app_icon_colorize = true
 font_family = "JetBrainsMono Nerd Font Mono"
 settings_window_translucent = false
+ui_scale = 1.3500000000000001
 
     [shell.panel]
     clipboard_position = "auto"
@@ -157,17 +212,16 @@ wallpaper_scheme = "m3-content"
     ]
 
 [wallpaper.default]
-path = "/home/tiizzel/Pictures/wallhaven-kw379d.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-o3r9p7.png"
 
 [wallpaper.last]
-path = "/home/tiizzel/Pictures/wallhaven-kw379d.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-o3r9p7.png"
 
 [wallpaper.monitors.DP-1]
-path = "/home/tiizzel/Pictures/wallhaven-kw379d.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-o3r9p7.png"
 
 [widget.clock]
 capsule = true
-capsule_border = "surface_variant"
 capsule_fill = "on_secondary"
 color = "primary"
 font_weight = 800

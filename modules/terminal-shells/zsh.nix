@@ -3,8 +3,13 @@
     programs.zsh = {
       enable = true;
       interactiveShellInit = ''
-        # Custom fc function for cleaning nix generations
+        # Custom fc function for cleaning nix generations (preserves zsh builtin fc for history/pay-respects)
         fc() {
+          if [[ "$1" =~ ^-[a-zA-Z] && "$1" != "-h" && "$1" != "--help" ]]; then
+            builtin fc "$@"
+            return $?
+          fi
+
           if [[ "$*" == *"-h"* ]] || [[ "$*" == *"--help"* ]]; then
             nh clean all --help
             return 0

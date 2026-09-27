@@ -1,0 +1,26 @@
+id          = "custom/nordvpn"
+name        = "NordVPN"
+version     = "1.0.0"
+plugin_api  = 24
+author      = "custom"
+license     = "MIT"
+icon        = "shield-lock"
+description = "NordVPN status indicator and quick control panel for Noctalia."
+tags        = ["bar", "panel", "network", "vpn"]
+
+[[service]]
+id    = "service"
+entry = "service.luau"
+
+[[widget]]
+id    = "bar"
+entry = "bar.luau"
+
+[[panel]]
+id              = "panel"
+entry           = "panel.luau"
+width           = 380
+height          = 460
+placement       = "attached"
+position        = "auto"
+open_near_click = true

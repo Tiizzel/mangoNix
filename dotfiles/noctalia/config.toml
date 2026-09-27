@@ -12,7 +12,16 @@ wallpaper_scheme = "m3-content"
 shell_mode = "follow"
 
 [theme.templates]
-builtin_ids = [ "btop", "gtk3", "gtk4", "ghostty", "kcolorscheme", "kitty", "mango", "qt" ]
+builtin_ids = [
+    "btop",
+    "gtk3",
+    "gtk4",
+    "ghostty",
+    "kcolorscheme",
+    "kitty",
+    "mango",
+    "qt",
+]
 community_ids = [
     "antigravity",
     "claude-code",
@@ -35,13 +44,14 @@ community_ids = [
     "bat",
     "fzf",
     "lazygit",
-    "yazi"
+    "yazi",
 ]
 
 [plugins]
-enabled = [ "noctalia/wallhaven" ]
+enabled = ["noctalia/wallhaven", "custom/nordvpn"]
 
 [shell]
+ui_scale = 1.35
 app_icon_colorize = true
 font_family = "JetBrainsMono Nerd Font Mono"
 corner_radius_scale = 1.0

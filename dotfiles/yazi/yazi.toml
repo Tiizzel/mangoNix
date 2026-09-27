@@ -19,5 +19,18 @@ image_filter = "triangle"
 image_quality = 80
 sixel_fraction = 15
 
+[opener]
+edit = [
+  { run = 'nvim "$@"', block = true, for = "unix", desc = "Neovim" },
+]
+
+[open]
+prepend_rules = [
+  { name = "*/", use = [ "edit", "open", "reveal" ] },
+  { mime = "text/*", use = [ "edit", "reveal" ] },
+  { mime = "application/{json,javascript,x-javascript,xml,yaml,x-yaml,x-toml}", use = [ "edit", "reveal" ] },
+  { mime = "application/{x-shellscript,x-python,x-perl,x-ruby}", use = [ "edit", "reveal" ] },
+]
+
 [input]
 cursor_blink = false

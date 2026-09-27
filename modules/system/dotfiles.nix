@@ -19,6 +19,7 @@
       ".config/matugen".source = link "${dotDir}/matugen";
       ".config/noctalia".source = link "${dotDir}/noctalia";
       ".config/ohmyposh".source = link "${dotDir}/ohmyposh";
+      ".config/nvim".source = link "${dotDir}/nvim";
       ".config/sddm".source = link "${dotDir}/sddm";
       ".config/Thunar".source = link "${dotDir}/thunar";
       ".config/thunar".source = link "${dotDir}/thunar";
@@ -28,6 +29,7 @@
       ".config/zen".source = link "${dotDir}/zen-browser";
       ".config/zshrc".source = link "${dotDir}/zshrc";
       ".local/state/noctalia/settings.toml".source = link "${dotDir}/noctalia/settings.toml";
+      ".local/state/noctalia/plugins/materialized/custom/nordvpn".source = link "${dotDir}/noctalia/plugins/nordvpn";
     };
   };
 }

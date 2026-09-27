@@ -49,10 +49,14 @@
 - [x] Implement atomic `.desktop` file generation to prevent launcher race conditions.
 - [x] Add interactive and CLI `--edit` feature to modify installed webapps.
 - [x] Create shared documentation bridge for Gemini Notebook.
+- [x] Configure LazyVim (`dotfiles/nvim`) with dynamic Matugen wallpaper color syncing and Nix-LD.
+- [x] Create comprehensive Neovim & LazyVim Cheat Sheet (`docs/neovim-cheatsheet.md`) with dual Noctalia / Fuzzel search overlays.
+- [x] Install NordVPN service and CLI/GUI (`modules/apps/nordvpn.nix`) with `nordvpn` group privileges.
 
 ### ⌨️ Keybindings & Desktop UX
-- [ ] **On-Screen Keybind Overlay:** Add a keybinding (e.g. `SUPER + k` or `SUPER + /`) in MangoWM / Noctalia to trigger a cheat sheet pop-up overlay.
-- [ ] **Custom Widget Toggles:** Extend Noctalia control center widgets for quick audio output switching and VPN controls.
+- [x] **Keybind Overlay:** `SUPER + .` (Noctalia) and `SUPER + CTRL + .` (Fuzzel Wide Modal) triggering [`show-keybinds.sh`](file:///home/tiizzel/mangoNix/dotfiles/mango/scripts/show-keybinds.sh).
+- [x] **Neovim Cheat Sheet Overlay:** `SUPER + ,` (Noctalia) and `SUPER + CTRL + ,` (Fuzzel Wide Modal) triggering [`show-neovim-cheatsheet.sh`](file:///home/tiizzel/mangoNix/dotfiles/mango/scripts/show-neovim-cheatsheet.sh).
+- [x] **Custom Widget Toggles:** Extend Noctalia control center widgets for quick audio output switching and VPN controls (Created custom Noctalia NordVPN bar widget & attached interactive control panel `custom/nordvpn`).
 - [ ] **Scratchpad Enhancements:** Add multi-window scratchpad support in MangoWM.
 
 ### 🔧 System & Nix Flakes Automation
@@ -61,13 +65,13 @@
 - [ ] **Nix GC Hook Automation:** Configure scheduled background cleanup for old Nix store generations using `nh`.
 
 ### 🎨 Theming & Aesthetics
-- [ ] **Extended Matugen Support:** Hook Matugen color palettes into Vesktop (Discord), Neovim, Btop, and GTK4 apps.
+- [ ] **Extended Matugen Support:** Hook Matugen color palettes into Vesktop (Discord), Btop, and GTK4 apps (Neovim completed).
 - [ ] **Light Mode Fallback:** Add light mode color palette templates for Matugen when using light wallpapers.
-- [ ] **SDDM Theme Sync:** Automatically sync SDDM background and colors with current Matugen palette.
+- [x] **SDDM Theme Sync:** Configured SDDM Astronaut theme with `purple_leaves` preset, dynamic active wallpaper sync, and Noctalia Material colors via Matugen (`modules/login-managers/sddm.nix`).
 
 ### 🎮 Hardware, Drivers & Gaming
 - [ ] **LACT Overclock Profiles:** Fine-tune AMDGPU fan curves and overdrive power targets in `modules/hardware/`.
-- [ ] **Wooting Integration:** Sync Wooting keyboard RGB profiles with active Matugen theme colors.
+- [x] **Wooting Integration:** Configured 94-LED Matugen template and OpenRGB synchronization for Wooting 80HE (`modules/theming/openrgb.nix`).
 - [ ] **Steam & Gamescope Tuning:** Add pre-configured Gamescope launch wrappers for Wayland gaming.
 
 ### 📁 Dotfiles & Home-Manager Maintenance

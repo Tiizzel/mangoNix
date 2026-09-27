@@ -1,7 +1,10 @@
 {
-  flake.aspects.base.nixos = { pkgs, ... }: {
-    environment.systemPackages = with pkgs; [
-      pay-respects
-    ];
+  flake.aspects.base.home = { pkgs, ... }: {
+    programs.pay-respects = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+    };
   };
 }
