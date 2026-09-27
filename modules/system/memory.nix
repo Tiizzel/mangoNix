@@ -18,7 +18,7 @@
       };
     };
 
-    # Kernel virtual memory sysctl tuning for zram
+    # Kernel virtual memory sysctl tuning for zram & gaming
     boot.kernel.sysctl = {
       # ZRAM performs best with high swappiness to compress cold pages and preserve file cache
       "vm.swappiness" = 180;
@@ -27,6 +27,8 @@
       # Avoid memory reclaim stalls during sudden allocation bursts
       "vm.watermark_boost_factor" = 0;
       "vm.watermark_scale_factor" = 125;
+      # Prevent crashes in memory-intensive games (Steam Proton, Star Citizen, DayZ, CS2)
+      "vm.max_map_count" = 2147483642;
     };
   };
 }

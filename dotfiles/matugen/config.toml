@@ -40,3 +40,8 @@ post_hook = "bash ~/mangoNix/dotfiles/openrgb/apply-wooting-theme.sh"
 input_path = "~/mangoNix/dotfiles/matugen/templates/community/neovim/matugen-template.lua"
 output_path = "~/mangoNix/dotfiles/nvim/lua/matugen.lua"
 post_hook = "pkill -SIGUSR1 nvim 2>/dev/null || true"
+
+[templates.fastfetch]
+input_path = "~/mangoNix/dotfiles/matugen/templates/fastfetch.jsonc"
+output_path = "~/mangoNix/dotfiles/fastfetch/config.jsonc"
+

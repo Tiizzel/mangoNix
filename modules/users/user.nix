@@ -41,6 +41,33 @@
         default = true;
         description = "Enable SOPS encrypted secrets management";
       };
+      gitUsername = lib.mkOption {
+        type = lib.types.str;
+        default = config.var.name;
+        description = "Default Git user name";
+      };
+      gitEmail = lib.mkOption {
+        type = lib.types.str;
+        default = "adamdominik1996@gmail.com";
+        description = "Default Git user email address";
+      };
+      kernel = lib.mkOption {
+        type = lib.types.enum [ "cachyos-bore" "zen" "latest" "default" ];
+        default = "cachyos-bore";
+        description = "Linux kernel package variant to use";
+      };
+      bootloader = lib.mkOption {
+        type = lib.types.enum [ "grub" "systemd-boot" ];
+        default = "grub";
+        description = "Bootloader to install and configure";
+      };
+      monitorRules = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [
+          "name:DP-1, width:5120, height:1440, refresh:240, x:0, y:0, rr:0, vrr:0, hdr:1, hdr_force:1, hdr_min_lum: 0.05, hdr_max_lum: 800"
+        ];
+        description = "List of MangoWM monitorrule configuration strings";
+      };
     };
 
     config = {

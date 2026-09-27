@@ -55,4 +55,8 @@ dotfiles/antigravity-ide/User/globalStorage/
 *.jsonlz4
 *.baklz4
 
+# Host-specific generated monitor configuration
+dotfiles/mango/cfg/mango-monitors.conf
+
 # Nix flake lock is tracked intentionally
+

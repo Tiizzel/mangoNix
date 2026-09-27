@@ -39,18 +39,21 @@
 
     # PERFORMANCE, LATENCY TUNING & HDR
     environment.variables = {
-      MESA_SHADER_CACHE_MAX_SIZE = "4G";
+      MESA_SHADER_CACHE_MAX_SIZE = "8G";
       ENABLE_GAMESCOPE_WSI = "1";
       DXVK_HDR = "1";
       ENABLE_HDR_WSI = "1";
     } // (lib.optionalAttrs (config.var.gpu == "amd") {
       AMD_VULKAN_ICD = "RADV";
+      RADV_PERFTEST = "gpl,sam";
     });
 
     # AMDGPU CONTROLLER & OVERCLOCKING (LACT)
     services.lact.enable = lib.mkIf (config.var.gpu == "amd") true;
 
-    boot.kernelParams = lib.mkIf (config.var.gpu == "amd") [
+    boot.kernelParams = [
+      "split_lock_mitigate=0"
+    ] ++ lib.optionals (config.var.gpu == "amd") [
       "amdgpu.ppfeaturemask=0xffffffff"
       "amdgpu.freesync_video=1"
     ];

@@ -1,6 +1,6 @@
 { inputs, ... }: {
   flake.aspects.base.nixos =
-    { pkgs, lib, ... }:
+    { pkgs, lib, config, ... }:
     let
       distro-grub-theme = pkgs.stdenv.mkDerivation {
         pname = "distro-grub-themes-nixos";
@@ -23,16 +23,16 @@
       ];
 
       boot = {
-        # Bootloader Configuration (GRUB with Distro Theme)
+        # Bootloader Configuration
         loader = {
-          systemd-boot.enable = false;
-
           efi = {
             canTouchEfiVariables = true;
           };
 
+          systemd-boot.enable = config.var.bootloader == "systemd-boot";
+
           grub = {
-            enable = true;
+            enable = config.var.bootloader == "grub";
             efiSupport = true;
             device = "nodev";
             useOSProber = true;
@@ -48,10 +48,15 @@
         tmp.cleanOnBoot = true;
 
         # Kernel configuration
-        # CachyOS with BORE (Burst-Oriented Response Enhancer) scheduler
-        # Compiled with Clang LTO optimized for x86_64-v3 (AMD Zen 3 / Ryzen 5000 series)
-        kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
-        # kernelPackages = pkgs.linuxPackages_zen;
+        kernelPackages =
+          if config.var.kernel == "cachyos-bore" then
+            pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3
+          else if config.var.kernel == "zen" then
+            pkgs.linuxPackages_zen
+          else if config.var.kernel == "latest" then
+            pkgs.linuxPackages_latest
+          else
+            pkgs.linuxPackages;
       };
     };
 }

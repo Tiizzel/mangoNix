@@ -5,14 +5,14 @@
     ];
   };
 
-  flake.aspects.base.home = { pkgs, ... }: {
+  flake.aspects.base.home = { pkgs, osConfig, ... }: {
     programs.git = {
       enable = true;
       
       settings = {
         user = {
-          name = "Tiizzel";
-          email = "adamdominik1996@gmail.com";
+          name = osConfig.var.gitUsername;
+          email = osConfig.var.gitEmail;
         };
 
         push.default = "simple";

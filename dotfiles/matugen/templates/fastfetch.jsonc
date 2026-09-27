@@ -3,12 +3,12 @@
   "logo": {
     "type": "small",
     "color": {
-      "1": "#f9ba72",
-      "2": "#bdcd9d",
-      "3": "#f9ba72",
-      "4": "#bdcd9d",
-      "5": "#f9ba72",
-      "6": "#bdcd9d"
+      "1": "{{colors.primary.default.hex}}",
+      "2": "{{colors.tertiary.default.hex}}",
+      "3": "{{colors.primary.default.hex}}",
+      "4": "{{colors.tertiary.default.hex}}",
+      "5": "{{colors.primary.default.hex}}",
+      "6": "{{colors.tertiary.default.hex}}"
     },
     "padding": {
       "top": 1,
@@ -19,14 +19,14 @@
   "display": {
     "separator": " ",
     "color": {
-      "keys": "#f9ba72",
-      "title": "#bdcd9d"
+      "keys": "{{colors.primary.default.hex}}",
+      "title": "{{colors.tertiary.default.hex}}"
     },
     "percent": {
       "color": {
         "green": "#88d8b0",
         "yellow": "#f6c177",
-        "red": "#ffb4ab"
+        "red": "{{colors.error.default.hex}}"
       }
     }
   },

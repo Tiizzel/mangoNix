@@ -499,10 +499,20 @@ if run_sudo env NIX_CONFIG="extra-experimental-features = nix-command flakes" ni
         run_sudo chown -R "${INPUT_USER}:" "$TARGET_HOME" 2>/dev/null || true
     fi
 
-    # If SOPS is enabled, switch git remote to SSH and ensure public key matches
+    # If SOPS is enabled, configure git remotes to use SSH (GitHub & GitLab dual push)
     if [ "$INPUT_SOPS" = "true" ]; then
-        info "Configuring git remote to use SSH (git@github.com)..."
-        (cd "$TARGET_DIR" && git remote set-url origin git@github.com:Tiizzel/mangoNix.git 2>/dev/null || true)
+        info "Configuring git remotes to use SSH (GitHub & GitLab)..."
+        (
+            cd "$TARGET_DIR" || exit 0
+            git remote set-url origin git@github.com:Tiizzel/mangoNix.git 2>/dev/null || true
+            git remote set-url --add --push origin git@github.com:Tiizzel/mangoNix.git 2>/dev/null || true
+            git remote set-url --add --push origin git@gitlab.com:Tiizzel/mangonix.git 2>/dev/null || true
+            git remote add github git@github.com:Tiizzel/mangoNix.git 2>/dev/null || git remote set-url github git@github.com:Tiizzel/mangoNix.git 2>/dev/null || true
+            git remote add gitlab git@gitlab.com:Tiizzel/mangonix.git 2>/dev/null || git remote set-url gitlab git@gitlab.com:Tiizzel/mangonix.git 2>/dev/null || true
+            git remote add all git@github.com:Tiizzel/mangoNix.git 2>/dev/null || true
+            git remote set-url --add --push all git@github.com:Tiizzel/mangoNix.git 2>/dev/null || true
+            git remote set-url --add --push all git@gitlab.com:Tiizzel/mangonix.git 2>/dev/null || true
+        )
         if [ -f "${TARGET_HOME}/.ssh/id_ed25519" ]; then
             ssh-keygen -y -f "${TARGET_HOME}/.ssh/id_ed25519" > "${TARGET_HOME}/.ssh/id_ed25519.pub" 2>/dev/null || true
             chmod 644 "${TARGET_HOME}/.ssh/id_ed25519.pub" 2>/dev/null || true

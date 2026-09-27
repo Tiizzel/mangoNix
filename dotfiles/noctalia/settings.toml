@@ -204,7 +204,6 @@ wallpaper_scheme = "m3-content"
         "prismlauncher",
         "steam",
         "fuzzel",
-        "fastfetch",
         "papirus-icons",
         "bat",
         "fzf",
@@ -215,13 +214,13 @@ wallpaper_scheme = "m3-content"
     enable_community_templates = true
 
 [wallpaper.default]
-path = "/home/tiizzel/Pictures/wallhaven-019299.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-0j2dq4.jpg"
 
 [wallpaper.last]
-path = "/home/tiizzel/Pictures/wallhaven-019299.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-0j2dq4.jpg"
 
 [wallpaper.monitors.DP-1]
-path = "/home/tiizzel/Pictures/wallhaven-019299.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-0j2dq4.jpg"
 
 [widget.clock]
 capsule = true
