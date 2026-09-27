@@ -24,6 +24,66 @@ The desktop is designed around a modern, dynamic glassmorphic aesthetic:
 
 ---
 
+## 🎨 Desktop Showcase & Gallery
+
+<p align="center">
+  <img src="docs/assets/hero-desktop.png" alt="mangoNix Hero Desktop" width="100%">
+  <br>
+  <em><b>Figure 1:</b> MangoWM tiling layout featuring Zen Browser, Ghostty, Neovim, and the Noctalia shell panel.</em>
+</p>
+
+<details>
+<summary><b>📸 Click to expand the full visual showcase</b></summary>
+
+<br>
+
+### 🌈 1. Dynamic Matugen Palette Sync
+> Changing wallpapers dynamically re-themes MangoWM borders, Ghostty/Kitty terminals, Noctalia widgets, Oh My Posh, and Neovim in real-time (`SUPER + ALT + t`).
+
+<p align="center">
+  <img src="docs/assets/matugen-theme-sync.png" alt="Dynamic Matugen Theme Sync" width="95%">
+</p>
+
+---
+
+### 🌌 2. Noctalia Shell & Custom Control Center
+> Fast, native Wayland desktop shell providing app launcher, control center, clipboard history, and NordVPN controls.
+
+<p align="center">
+  <img src="docs/assets/noctalia-controls.png" alt="Noctalia Shell Controls" width="95%">
+</p>
+
+---
+
+### ⌨️ 3. Built-In Cheat Sheet Overlays
+> Access interactive keybindings (`SUPER + .`) and Neovim cheat sheets (`SUPER + ,`) instantly via Noctalia or Fuzzel modals.
+
+<p align="center">
+  <img src="docs/assets/cheat-sheet-modals.png" alt="Interactive Cheat Sheet Overlays" width="95%">
+</p>
+
+---
+
+### ⚡ 4. Terminal Stack & Daily Rebuilds
+> Powered by Yazi file manager, Ghostty GPU terminal, Oh My Posh Zen prompt, and `nh` NixOS rebuild helper (`fr`).
+
+<p align="center">
+  <img src="docs/assets/terminal-power-tools.png" alt="Terminal Power Tools" width="95%">
+</p>
+
+---
+
+### 🔒 5. SDDM Astronaut Display Manager
+> Unified login experience with dynamic wallpaper syncing and Material You color accents.
+
+<p align="center">
+  <img src="docs/assets/sddm-astronaut.png" alt="SDDM Astronaut Login Theme" width="95%">
+</p>
+
+</details>
+
+---
+
 ## 💻 Tech Stack & Specs
 
 | Component | Software | Description |
@@ -37,7 +97,7 @@ The desktop is designed around a modern, dynamic glassmorphic aesthetic:
 | **Browser** | Zen Browser | Privacy-focused, Arc-inspired Firefox fork |
 | **File Managers** | Thunar & Yazi | GUI (XFCE) and fast terminal file managers |
 | **Text Editors** | Kate / Neovim / Antigravity IDE | Graphical and terminal-based code editors |
-| **Display Manager** | SDDM | Chili Wayland theme |
+| **Display Manager** | SDDM | Astronaut theme (purple_leaves) with dynamic wallpaper sync |
 | **Audio** | PipeWire & WirePlumber | Low-latency audio server with Pavucontrol |
 | **Graphics & Tuning** | AMDGPU + LACT | Mesa RADV Vulkan, HDR WSI, overdrive & fan control |
 | **Rebuild Helper** | `nh` | Fast NixOS rebuild CLI with generation cleaner |
@@ -249,6 +309,12 @@ The primary modifier key is **`SUPER`** (the Windows key).
 | `SUPER + s` | Region screenshot |
 | `SUPER + CTRL + s` | Fullscreen screenshot |
 | `SUPER + SHIFT + s` | Screenshot and annotate |
+
+### 📖 Cheat Sheets & Overlays
+| Keybind | Action |
+|---|---|
+| `SUPER + .` | Interactive Keybindings modal (`SUPER + CTRL + .` for Fuzzel) |
+| `SUPER + ,` | Interactive Neovim Cheat Sheet modal (`SUPER + CTRL + ,` for Fuzzel) |
 
 ---
 

@@ -21,7 +21,8 @@
     };
 
     # Writable symlink for DDNet configuration
-    home.file.".local/share/ddnet".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/ddnet-data";
+    home.file.".local/share/ddnet".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/ddnet-data";
 
     # Local LibreTranslate service for in-game chat translation without rate limits
     systemd.user.services.libretranslate = {
@@ -29,7 +30,7 @@
         Description = "LibreTranslate translation service for TaterClient";
       };
       Service = {
-        ExecStart = "${pkgs.libretranslate}/bin/libretranslate --host 127.0.0.1 --port 5000 --load-only en,de,ru,zh,fr,es,pl,uk,tr --disable-web-ui";
+        ExecStart = "${pkgs.libretranslate}/bin/libretranslate --host 127.0.0.1 --port 5000 --load-only en,de,ru,zh,fr,es,pl,uk,tr,ro --disable-web-ui";
         Restart = "on-failure";
       };
       Install = {
