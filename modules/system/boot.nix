@@ -51,6 +51,7 @@
         # CachyOS with BORE (Burst-Oriented Response Enhancer) scheduler
         # Compiled with Clang LTO optimized for x86_64-v3 (AMD Zen 3 / Ryzen 5000 series)
         kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
+        # kernelPackages = pkgs.linuxPackages_zen;
       };
     };
 }

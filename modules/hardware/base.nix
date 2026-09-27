@@ -1,5 +1,3 @@
 {
-  flake.aspects.base.nixos = { ... }: {
-    imports = [ ../../hardware-configuration.nix ];
-  };
+  # Machine-specific hardware configurations are managed per-host under hosts/<hostname>/hardware-configuration.nix
 }

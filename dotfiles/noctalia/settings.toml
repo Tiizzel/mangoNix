@@ -26,6 +26,7 @@ start = [ "launcher", "wallpaper", "workspaces", "media" ]
 enabled = false
 
 [hooks]
+started = "matugen-apply"
 wallpaper_changed = "matugen-apply"
 
 [idle]
@@ -210,15 +211,17 @@ wallpaper_scheme = "m3-content"
         "lazygit",
         "yazi"
     ]
+    enable_builtin_templates = true
+    enable_community_templates = true
 
 [wallpaper.default]
-path = "/home/tiizzel/Pictures/wallhaven-8g5872.png"
+path = "/home/tiizzel/Pictures/wallhaven-019299.jpg"
 
 [wallpaper.last]
-path = "/home/tiizzel/Pictures/wallhaven-8g5872.png"
+path = "/home/tiizzel/Pictures/wallhaven-019299.jpg"
 
 [wallpaper.monitors.DP-1]
-path = "/home/tiizzel/Pictures/wallhaven-8g5872.png"
+path = "/home/tiizzel/Pictures/wallhaven-019299.jpg"
 
 [widget.clock]
 capsule = true

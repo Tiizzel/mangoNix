@@ -1,9 +1,10 @@
+@import "/home/tiizzel/.cache/noctalia/zen-browser/zen-userChrome.css";
 /* Zen Browser Custom User Chrome CSS */
 /* Clean, minimal UI tuned for MangoWM and Noctalia dark theme */
 
 :root {
   --zen-border-radius: 8px !important;
-  --zen-dark-color-mix-base: #141218 !important;
+  --zen-dark-color-mix-base: var(--base, #141218) !important;
 }
 
 /* Rounded corners on the web contents area */
@@ -20,5 +21,5 @@
 /* Sleek minimalist scrollbar */
 * {
   scrollbar-width: thin !important;
-  scrollbar-color: #49454f transparent !important;
+  scrollbar-color: var(--muted, #49454f) transparent !important;
 }

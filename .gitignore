@@ -37,9 +37,9 @@ secrets/*raw*
 dotfiles/zen-browser/*
 !dotfiles/zen-browser/profiles.ini
 !dotfiles/zen-browser/user.js
-!dotfiles/zen-browser/chrome/
 !dotfiles/zen-browser/chrome/userChrome.css
 !dotfiles/zen-browser/chrome/userContent.css
+dotfiles/zen-browser/chrome/zen-themes.css
 
 # Antigravity IDE state
 dotfiles/antigravity-ide/state/

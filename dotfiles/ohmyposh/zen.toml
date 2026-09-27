@@ -4,18 +4,18 @@ version = 4
 final_space = true
 
 [palette]
-  background = '#11140e'
-  surface = '#11140e'
-  surface_variant = '#44483e'
-  surface_container = '#1e211a'
-  primary = '#afd18c'
-  on_primary = '#1d3703'
-  secondary = '#bfcbae'
-  on_secondary = '#29341f'
-  tertiary = '#a0cfcd'
-  on_tertiary = '#003735'
+  background = '#151217'
+  surface = '#151217'
+  surface_variant = '#4a454e'
+  surface_container = '#221e24'
+  primary = '#dbb9f9'
+  on_primary = '#3f2458'
+  secondary = '#d1c1d9'
+  on_secondary = '#372c3f'
+  tertiary = '#f3b7bd'
+  on_tertiary = '#4b252a'
   error = '#ffb4ab'
-  outline = '#8e9285'
+  outline = '#968e98'
 
 [secondary_prompt]
   template = '<p:primary,transparent></><,p:primary> > </><p:primary,transparent></> '

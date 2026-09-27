@@ -59,4 +59,6 @@
 - 📋 **System TODO & Improvement Roadmap**: [`docs/todo.md`](file:///home/tiizzel/mangoNix/docs/todo.md) — Comprehensive task backlog, MangoWM 0.17.0 enhancements, Noctalia UX, performance tuning, and completed milestones.
 - 📸 **GitHub/GitLab Screenshot Showcase Guide**: [`docs/git-screenshot.md`](file:///home/tiizzel/mangoNix/docs/git-screenshot.md) — Highlighting strategy, capture workflow, and gallery snippet for README.md.
 - ⌨️ **Neovim & LazyVim Cheat Sheet**: [`docs/neovim-cheatsheet.md`](file:///home/tiizzel/mangoNix/docs/neovim-cheatsheet.md) — Modal keybindings reference and search overlays.
+- 🔍 **NixOS Research Guidelines**: [`.agents/rules/nixos-research.md`](file:///home/tiizzel/mangoNix/.agents/rules/nixos-research.md) — Prioritize `mcp-nixos`, [MyNixOS](https://mynixos.com/), [NixOS Search (unstable)](https://search.nixos.org/packages?channel=unstable), and [NixOS Wiki](https://wiki.nixos.org/wiki/NixOS_Wiki) alongside other sources.
+
 
