@@ -25,9 +25,9 @@
       ".config/thunar".source = link "${dotDir}/thunar";
       ".config/xdg-desktop-portal".source = link "${dotDir}/xdg-desktop-portal";
       ".config/yazi".source = link "${dotDir}/yazi";
-      ".config/zen/profiles.ini".source = link "${dotDir}/zen-browser/profiles.ini";
-      ".config/zen/default/chrome".source = link "${dotDir}/zen-browser/chrome";
-      ".config/zen/default/user.js".source = link "${dotDir}/zen-browser/user.js";
+      ".config/zen/profiles.ini".source = link "${dotDir}/zen/profiles.ini";
+      ".config/zen/default/chrome".source = link "${dotDir}/zen/chrome";
+      ".config/zen/default/user.js".source = link "${dotDir}/zen/user.js";
       ".config/zshrc".source = link "${dotDir}/zshrc";
       ".local/state/noctalia/settings.toml".source = link "${dotDir}/noctalia/settings.toml";
       ".local/state/noctalia/plugins/materialized/custom/nordvpn".source = link "${dotDir}/noctalia/plugins/nordvpn";

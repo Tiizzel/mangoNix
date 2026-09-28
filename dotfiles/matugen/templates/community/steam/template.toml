@@ -4,4 +4,4 @@ category = "gaming"
 
 [templates.steam]
 input_path = "steam.css"
-output_path = "~/.steam/steam/steamui/skins/Material-Theme/css/main/colors/matugen.css"
+output_path = "~/.local/share/Steam/steamui/skins/Material-Theme/css/main/colors/matugen.css"

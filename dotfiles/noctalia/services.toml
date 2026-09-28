@@ -37,5 +37,5 @@ temperature_night = 4000
 
 [osd]
 enabled = true
-position = "bottom_center"
+position = "top_center"
 border = true

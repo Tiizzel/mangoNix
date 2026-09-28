@@ -1,29 +1,103 @@
 # Ghostty Terminal Configuration
-# Documentation: https://ghostty.org/docs/config/reference
+# Official Documentation: https://ghostty.org/docs
+# Configuration Reference: https://ghostty.org/docs/config/reference
 
-# Font settings
+# ==============================================================================
+# 1. Fonts & Typography
+# ==============================================================================
 font-family = JetBrainsMono Nerd Font
 font-size = 12
+# OpenType features: enable contextual alternates and standard ligatures
 font-feature = calt
 font-feature = liga
+# Improve readability on dark themes by ensuring slight minimum contrast
+minimum-contrast = 1.1
 
-# Window appearance
+# ==============================================================================
+# 2. Window & Appearance
+# ==============================================================================
+window-theme = dark
+window-decoration = false
+gtk-titlebar = false
+background-opacity = 0.92
+background-blur = 20
+# Padding & layout balance
 window-padding-x = 12
 window-padding-y = 12
-window-decoration = false
-background-opacity = 0.92
-gtk-titlebar = false
+# Evenly distribute leftover cell padding across all four margins
+window-padding-balance = true
+# Extend the background color into the padding area for clean full-screen TUIs
+window-padding-color = extend
 
-# Cursor
-cursor-style = block
-cursor-style-blink = true
-
-# Theme
+# ==============================================================================
+# 3. Theme & Colors (Synced dynamically with Noctalia / Matugen)
+# ==============================================================================
 theme = noctalia
 
-# Behavior
+# ==============================================================================
+# 4. Cursor & Mouse
+# ==============================================================================
+cursor-style = block
+cursor-style-blink = true
+cursor-click-to-move = true
 mouse-hide-while-typing = true
-confirm-close-surface = false
-app-notifications = no-clipboard-copy
+mouse-scroll-multiplier = 2
+
+# ==============================================================================
+# 5. Clipboard & Security
+# ==============================================================================
+# Automatically copy mouse text selections to the system clipboard
 copy-on-select = clipboard
-scrollback-limit = 10000
+# Strip trailing spaces on copied text
+clipboard-trim-trailing-spaces = true
+# Protect against accidental newline execution on multi-line paste
+clipboard-paste-protection = true
+clipboard-paste-bracketed-safe = true
+
+# ==============================================================================
+# 6. Shell Integration & Remote SSH
+# ==============================================================================
+shell-integration = detect
+# Enable title, sudo wrapper, and automatic remote terminfo/env over SSH
+# (no-cursor preserves the custom block cursor instead of forcing a bar at prompt)
+shell-integration-features = no-cursor,sudo,title,ssh-env,ssh-terminfo
+
+# ==============================================================================
+# 7. Notifications & Long-Running Tasks
+# ==============================================================================
+# Send a desktop notification when commands taking >10s finish while Ghostty is unfocused
+desktop-notifications = true
+notify-on-command-finish = unfocused
+notify-on-command-finish-after = 10s
+notify-on-command-finish-action = notify
+# Avoid notification popups on every copy/select event
+app-notifications = no-clipboard-copy
+
+# ==============================================================================
+# 8. Splits & Tabs
+# ==============================================================================
+# Dim unfocused split panes to easily distinguish the active split
+unfocused-split-opacity = 0.85
+# Preserve working directory when creating new tabs or splits
+window-inherit-working-directory = true
+tab-inherit-working-directory = true
+split-inherit-working-directory = true
+
+# ==============================================================================
+# 9. Terminal Lifecycle & Scrollback
+# ==============================================================================
+confirm-close-surface = false
+# Generous scrollback buffer for build logs (nix, cargo, gcc)
+scrollback-limit = 50000
+
+# ==============================================================================
+# 10. Keybindings
+# ==============================================================================
+# Vi-style split navigation (Ctrl+Alt+H/J/K/L)
+keybind = ctrl+alt+h=goto_split:left
+keybind = ctrl+alt+j=goto_split:down
+keybind = ctrl+alt+k=goto_split:up
+keybind = ctrl+alt+l=goto_split:right
+
+# Equalize splits layout
+keybind = ctrl+alt+equal=equalize_splits

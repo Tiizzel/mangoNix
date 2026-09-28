@@ -59,16 +59,28 @@ LANGUAGE_LOOKUP = {
 }
 
 def extract_language_prefix(text):
+    original_text = text
     text = text.strip()
-    if ":" in text:
-        prefix, rest = text.split(":", 1)
-        prefix = prefix.strip().lower()
-        rest = rest.strip()
-        if (rest.startswith('"') and rest.endswith('"')) or (rest.startswith("'") and rest.endswith("'")):
-            rest = rest[1:-1].strip()
-        if prefix in LANGUAGE_LOOKUP and rest:
-            return LANGUAGE_LOOKUP[prefix], rest
-    return None, text
+    parts = text.split(":")
+    
+    for i in range(len(parts) - 1):
+        potential_lang = parts[i].strip().lower()
+        if potential_lang in LANGUAGE_LOOKUP:
+            target_lang = LANGUAGE_LOOKUP[potential_lang]
+            
+            if i > 0:
+                preserved_prefix = ":".join(parts[:i]) + ": "
+            else:
+                preserved_prefix = ""
+            
+            cleaned_text = ":".join(parts[i+1:]).strip()
+            
+            if (cleaned_text.startswith('"') and cleaned_text.endswith('"')) or (cleaned_text.startswith("'") and cleaned_text.endswith("'")):
+                cleaned_text = cleaned_text[1:-1].strip()
+                
+            return target_lang, preserved_prefix, cleaned_text
+            
+    return None, "", original_text
 
 def is_german(text):
     try:
@@ -95,7 +107,8 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
         body_bytes = self.rfile.read(content_len)
 
         # Check if this is a translation request
-        if self.path.rstrip("/") == "/translate":
+        if self.path.rstrip("/") in ("/translate", ""):
+            self.path = "/translate"
             try:
                 payload = json.loads(body_bytes.decode("utf-8"))
                 source_lang = payload.get("source", "auto")
@@ -105,9 +118,9 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                 sys.stderr.flush()
 
                 # 1. Check for language prefix like 'turkish: message' or 'tr: message'
-                target_override, cleaned_text = extract_language_prefix(text)
+                target_override, preserved_prefix, cleaned_text = extract_language_prefix(text)
                 if target_override:
-                    sys.stderr.write(f"[PROXY] Prefix matched -> target: {target_override}, text: {cleaned_text!r}\n")
+                    sys.stderr.write(f"[PROXY] Prefix matched -> target: {target_override}, prefix: {preserved_prefix!r}, text: {cleaned_text!r}\n")
                     sys.stderr.flush()
                     req_data = json.dumps({
                         "q": cleaned_text,
@@ -125,6 +138,15 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                         resp_bytes = resp.read()
                         sys.stderr.write(f"[PROXY] LibreTranslate returned: {resp_bytes.decode('utf-8', 'ignore')}\n")
                         sys.stderr.flush()
+                        
+                        try:
+                            resp_json = json.loads(resp_bytes.decode("utf-8"))
+                            if "translatedText" in resp_json:
+                                resp_json["translatedText"] = preserved_prefix + resp_json["translatedText"]
+                            resp_bytes = json.dumps(resp_json).encode("utf-8")
+                        except Exception as e:
+                            sys.stderr.write(f"[PROXY] Error re-injecting prefix: {e}\n")
+                            
                         self.send_response(resp.status)
                         for k, v in resp.headers.items():
                             if k.lower() not in ("content-length", "transfer-encoding"):
@@ -133,6 +155,22 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                         self.end_headers()
                         self.wfile.write(resp_bytes)
                         return
+
+                # If the target is 'none' (set via tc_translate_outgoing_target), and we didn't match a prefix above,
+                # then return the original text untouched (do not translate).
+                if target_lang == "none":
+                    sys.stderr.write(f"[PROXY] Target is 'none', leaving outgoing message untouched: {text!r}\n")
+                    sys.stderr.flush()
+                    res_body = json.dumps({
+                        "translatedText": text,
+                        "detectedLanguage": {"confidence": 100.0, "language": source_lang}
+                    }).encode("utf-8")
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.send_header("Content-Length", str(len(res_body)))
+                    self.end_headers()
+                    self.wfile.write(res_body)
+                    return
 
                 # 2. If target is 'en' and text is German, return original text untouched
                 if target_lang == "en" and (source_lang == "de" or (source_lang == "auto" and is_german(text))):
@@ -154,6 +192,8 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
 
         # Otherwise, forward request to LibreTranslate backend
         target_url = BACKEND + self.path
+        sys.stderr.write(f"[PROXY] Forwarding {self.path} to {target_url}\n")
+        sys.stderr.flush()
         req = urllib.request.Request(
             target_url,
             data=body_bytes,
@@ -189,6 +229,8 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
         target_url = BACKEND + self.path
+        sys.stderr.write(f"[PROXY] GET {self.path} forwarding to {target_url}\n")
+        sys.stderr.flush()
         req = urllib.request.Request(
             target_url,
             headers={k: v for k, v in self.headers.items() if k.lower() != "host"},

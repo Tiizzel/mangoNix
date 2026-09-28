@@ -9,10 +9,10 @@ MATUGEN_JSON="$HOME/mangoNix/dotfiles/matugen/colors.json"
 
 apply_theme() {
   # Default Matugen values rendered from current wallpaper
-  PRIMARY="f9ba72"
-  SECONDARY="e0c1a3"
-  ON_PRIMARY="482a00"
-  ON_SECONDARY="3f2d17"
+  PRIMARY="b3c5ff"
+  SECONDARY="c1c6dd"
+  ON_PRIMARY="192e60"
+  ON_SECONDARY="2a3042"
 
   # If Noctalia config is active, prefer Noctalia's exact active palette
   if [ -f "$KITTY_CONF" ]; then

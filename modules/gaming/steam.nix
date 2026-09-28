@@ -5,13 +5,21 @@
         enable = true;
         package = pkgs.steam.override {
           extraProfile = ''
-            export MILLENNIUM_RUNTIME_PATH="/home/${config.var.username}/.local/share/millennium/libmillennium_x86.so"
-            mkdir -p "/home/${config.var.username}/.steam/steam/ubuntu12_32" "/home/${config.var.username}/.steam/steam/ubuntu12_64" "/home/${config.var.username}/.steam/steam/millennium"
-            ln -sf "/home/${config.var.username}/.local/share/millennium/libmillennium_bootstrap_x86.so" "/home/${config.var.username}/.steam/steam/ubuntu12_32/libXtst.so.6"
-            ln -sf "/home/${config.var.username}/.local/share/millennium/libmillennium_bootstrap_hhx64.so" "/home/${config.var.username}/.steam/steam/ubuntu12_64/libXtst.so.6"
-            ln -sf "/home/${config.var.username}/.local/share/millennium/libmillennium_hhx64.so" "/home/${config.var.username}/.steam/steam/ubuntu12_64/libmillennium_hhx64.so"
-            if [ -d "/home/${config.var.username}/.steam/steam/steamui/skins" ]; then
-              ln -sfn "/home/${config.var.username}/.steam/steam/steamui/skins" "/home/${config.var.username}/.steam/steam/millennium/themes"
+            MILLENNIUM_DIR="/home/${config.var.username}/.local/share/millennium"
+            STEAM_DIR="/home/${config.var.username}/.local/share/Steam"
+
+            if [ -f "$MILLENNIUM_DIR/libmillennium_bootstrap_x86.so" ]; then
+              export MILLENNIUM_RUNTIME_PATH="$MILLENNIUM_DIR/libmillennium_x86.so"
+              mkdir -p "$STEAM_DIR/ubuntu12_32" "$STEAM_DIR/ubuntu12_64" "$STEAM_DIR/millennium"
+              ln -sf "$MILLENNIUM_DIR/libmillennium_bootstrap_x86.so" "$STEAM_DIR/ubuntu12_32/libXtst.so.6"
+              ln -sf "$MILLENNIUM_DIR/libmillennium_bootstrap_hhx64.so" "$STEAM_DIR/ubuntu12_64/libXtst.so.6"
+              ln -sf "$MILLENNIUM_DIR/libmillennium_hhx64.so" "$STEAM_DIR/ubuntu12_64/libmillennium_hhx64.so"
+              if [ -d "$STEAM_DIR/steamui/skins" ]; then
+                ln -sfn "$STEAM_DIR/steamui/skins" "$STEAM_DIR/millennium/themes"
+              fi
+            else
+              [ -L "$STEAM_DIR/ubuntu12_32/libXtst.so.6" ] && [ ! -e "$STEAM_DIR/ubuntu12_32/libXtst.so.6" ] && rm -f "$STEAM_DIR/ubuntu12_32/libXtst.so.6"
+              [ -L "$STEAM_DIR/ubuntu12_64/libXtst.so.6" ] && [ ! -e "$STEAM_DIR/ubuntu12_64/libXtst.so.6" ] && rm -f "$STEAM_DIR/ubuntu12_64/libXtst.so.6"
             fi
           '';
         };

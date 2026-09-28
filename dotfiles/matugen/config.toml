@@ -45,3 +45,12 @@ post_hook = "pkill -SIGUSR1 nvim 2>/dev/null || true"
 input_path = "~/mangoNix/dotfiles/matugen/templates/fastfetch.jsonc"
 output_path = "~/mangoNix/dotfiles/fastfetch/config.jsonc"
 
+
+[templates.zen_browser_chrome]
+input_path = "~/mangoNix/dotfiles/matugen/templates/community/zen-browser/zen-userChrome.css"
+output_path = "~/.cache/noctalia/zen-browser/zen-userChrome.css"
+
+[templates.zen_browser_content]
+input_path = "~/mangoNix/dotfiles/matugen/templates/community/zen-browser/zen-userContent.css"
+output_path = "~/.cache/noctalia/zen-browser/zen-userContent.css"
+post_hook = "bash ~/mangoNix/dotfiles/matugen/templates/community/zen-browser/apply.sh"

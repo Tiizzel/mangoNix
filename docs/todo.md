@@ -22,6 +22,7 @@ This roadmap tracks completed milestones and organizes pending system tasks, com
 - [x] **Wooting 80HE RGB Sync:** Created 94-LED Matugen color template and OpenRGB synchronization script in [`modules/theming/openrgb.nix`](file:///home/tiizzel/mangoNix/modules/theming/openrgb.nix).
 - [x] **ZRAM & OOM Daemon Tuning:** Configured compressed in-memory swap (`zramSwap.enable = true` with zstd, priority 100, memoryPercent = 100), `systemd.oomd` userspace protection, and kernel memory sysctl tuning (`vm.swappiness = 180`, `vm.page-cluster = 0`) in [`modules/system/memory.nix`](file:///home/tiizzel/mangoNix/modules/system/memory.nix).
 - [x] **Shared Documentation Ecosystem:** Established dedicated bridge documents: [`docs/gemini-notes.md`](file:///home/tiizzel/mangoNix/docs/gemini-notes.md), [`docs/git-screenshot.md`](file:///home/tiizzel/mangoNix/docs/git-screenshot.md), [`docs/neovim-cheatsheet.md`](file:///home/tiizzel/mangoNix/docs/neovim-cheatsheet.md), and [`docs/todo.md`](file:///home/tiizzel/mangoNix/docs/todo.md).
+- [x] **Terminal Window Swallowing (`isterm:1`):** Configured window swallowing rules in [`dotfiles/mango/cfg/rules.conf`](file:///home/tiizzel/mangoNix/dotfiles/mango/cfg/rules.conf) for Ghostty (`com.mitchellh.ghostty`) and Kitty (`kitty`), allowing child GUI applications launched from the terminal to temporarily swallow the inactive terminal window and automatically restore it upon exit.
 
 ---
 
@@ -41,19 +42,15 @@ This roadmap tracks completed milestones and organizes pending system tasks, com
 
 ## 🪟 Window Management, Documentation & Maintenance
 
-3. **Window Swallowing (`swallow = true`)**
-   - **Why**: Prevents inactive terminal windows from lingering on screen when launching graphical tools (e.g., editors, file managers) from Ghostty or Kitty.
-   - **Action**: Add window swallow rules or compositor option in [`dotfiles/mango/cfg/rules.conf`](file:///home/tiizzel/mangoNix/dotfiles/mango/cfg/rules.conf).
-
-4. **README Screenshots & Showcase Gallery Assets**
+3. **README Screenshots & Showcase Gallery Assets**
    - **Why**: Populates the GitHub & GitLab README showcase with 16:9 2560x1440 screenshots.
    - **Action**: Capture the 6 planned screenshots listed in [`docs/git-screenshot.md`](file:///home/tiizzel/mangoNix/docs/git-screenshot.md) and place them in [`docs/assets/`](file:///home/tiizzel/mangoNix/docs/assets/).
 
-5. **Installer Hardening (`install.sh`)**
+4. **Installer Hardening (`install.sh`)**
    - **Why**: Smooth onboarding for fresh installations or multi-monitor systems.
    - **Action**: Expand [`install.sh`](file:///home/tiizzel/mangoNix/install.sh) with disk partitioning prompts and multi-monitor display layout detection.
 
-6. **SOPS Key Automated Generation Bootstrapping**
+5. **SOPS Key Automated Generation Bootstrapping**
    - **Why**: Simplifies fresh setups when users want declarative secrets without manually running `age-keygen`.
    - **Action**: Add interactive generation of a new Age keypair when `options.var.enableSops` is selected and no existing key is provided.
 

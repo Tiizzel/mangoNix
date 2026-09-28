@@ -7,6 +7,7 @@ border_width = 2.0
 capsule = true
 capsule_border = "primary"
 capsule_fill = "on_secondary"
+capsule_radius = "auto"
 end = [
     "tray",
     "custom/nordvpn:bar",
@@ -214,13 +215,13 @@ wallpaper_scheme = "m3-content"
     enable_community_templates = true
 
 [wallpaper.default]
-path = "/home/tiizzel/Pictures/wallhaven-0j2dq4.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-8g5872.png"
 
 [wallpaper.last]
-path = "/home/tiizzel/Pictures/wallhaven-0j2dq4.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-8g5872.png"
 
 [wallpaper.monitors.DP-1]
-path = "/home/tiizzel/Pictures/wallhaven-0j2dq4.jpg"
+path = "/home/tiizzel/Pictures/wallhaven-8g5872.png"
 
 [widget.clock]
 capsule = true
@@ -232,3 +233,7 @@ font_weight = 800
 color = "primary"
 custom_image_colorize = true
 glyph = "snowflake"
+
+[widget.workspaces]
+label_source = "name"
+max_label_chars = 4

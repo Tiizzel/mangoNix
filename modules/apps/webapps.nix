@@ -22,6 +22,16 @@
 
           mkdir -p "$APPS_DIR" "$ICONS_DIR" "$HICOLOR_DIR" "$DATA_DIR" "$BIN_DIR"
 
+          # If launched without an interactive terminal (e.g. from an application launcher like Noctalia or Fuzzel),
+          # automatically re-execute inside a floating Ghostty or Kitty terminal window.
+          if [ ! -t 0 ]; then
+            if command -v ghostty >/dev/null 2>&1; then
+              exec ghostty --title="WebApp Desktop Manager" -e "$0" "$@"
+            elif command -v kitty >/dev/null 2>&1; then
+              exec kitty --title="WebApp Desktop Manager" "$0" "$@"
+            fi
+          fi
+
           slugify() {
             echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g' | sed -E 's/^-+|-+$//g'
           }
@@ -719,32 +729,65 @@ EOF
               exit 0
               ;;
             create)
-              # If invoked interactively with no arguments, show manager menu if webapps exist
+              # If invoked interactively with no arguments, show manager menu
               if [ "$IS_CALLED_WITHOUT_ARGS" -eq 1 ] && [ -t 0 ]; then
-                has_apps=0
-                for f in "$APPS_DIR"/webapp-*.desktop; do
-                  if [ -f "$f" ]; then
-                    has_apps=1
-                    break
-                  fi
-                done
-                if [ "$has_apps" -eq 1 ]; then
+                while true; do
+                  has_apps=0
+                  for f in "$APPS_DIR"/webapp-*.desktop; do
+                    if [ -f "$f" ]; then
+                      has_apps=1
+                      break
+                    fi
+                  done
+
                   echo "═══════════════════════════════════════════════════════"
                   echo "  🚀 WebApp Desktop Manager"
                   echo "═══════════════════════════════════════════════════════"
                   echo "  1) Create a new WebApp (default)"
-                  echo "  2) Edit an existing WebApp"
-                  echo "  3) List installed WebApps"
-                  echo "  4) Delete a WebApp"
+                  if [ "$has_apps" -eq 1 ]; then
+                    echo "  2) Edit an existing WebApp"
+                    echo "  3) List installed WebApps"
+                    echo "  4) Delete a WebApp"
+                  fi
+                  echo "  q) Exit"
                   echo "═══════════════════════════════════════════════════════"
-                  read -r -p "Choose an option [1-4, Enter for Create]: " top_choice
+                  max_choice="1"
+                  [ "$has_apps" -eq 1 ] && max_choice="4"
+                  read -r -p "Choose an option [1-$max_choice, Enter for Create, q to quit]: " top_choice
                   case "$top_choice" in
-                    2) edit_webapp ""; exit 0 ;;
-                    3) list_webapps; exit 0 ;;
-                    4) delete_webapp ""; exit 0 ;;
-                    *) ;;
+                    2)
+                      if [ "$has_apps" -eq 1 ]; then
+                        edit_webapp ""
+                        echo ""
+                        read -r -p "Press [Enter] to return to menu..." _
+                      fi
+                      ;;
+                    3)
+                      if [ "$has_apps" -eq 1 ]; then
+                        list_webapps
+                        echo ""
+                        read -r -p "Press [Enter] to return to menu..." _
+                      fi
+                      ;;
+                    4)
+                      if [ "$has_apps" -eq 1 ]; then
+                        delete_webapp ""
+                        echo ""
+                        read -r -p "Press [Enter] to return to menu..." _
+                      fi
+                      ;;
+                    [qQ]|[qQ][uU][iI][tT])
+                      exit 0
+                      ;;
+                    1|"")
+                      break
+                      ;;
+                    *)
+                      echo "Invalid selection."
+                      sleep 1
+                      ;;
                   esac
-                fi
+                done
               fi
               ;;
           esac
@@ -869,6 +912,11 @@ EOF
           echo "  • Mode         : $([ "$ISOLATED" -eq 1 ] && echo "Isolated Profile" || echo "Shared Browser Profile")"
           echo "═══════════════════════════════════════════════════════"
           echo "You can now launch '$NAME' from your App Launcher (Noctalia, Fuzzel, etc.)"
+
+          if [ "$IS_CALLED_WITHOUT_ARGS" -eq 1 ] && [ -t 0 ]; then
+            echo ""
+            read -r -p "Press [Enter] to close..." _
+          fi
         '';
       };
 
@@ -876,10 +924,38 @@ EOF
         #!${pkgs.bash}/bin/bash
         exec ${createWebapp}/bin/create-webapp "$@"
       '';
+
+      webappManager = pkgs.writeShellApplication {
+        name = "webapp-manager";
+        runtimeInputs = with pkgs; [ ghostty kitty ];
+        text = ''
+          if command -v ghostty >/dev/null 2>&1; then
+            exec ghostty --title="WebApp Desktop Manager" -e "${createWebapp}/bin/create-webapp" "$@"
+          elif command -v kitty >/dev/null 2>&1; then
+            exec kitty --title="WebApp Desktop Manager" "${createWebapp}/bin/create-webapp" "$@"
+          else
+            exec "${createWebapp}/bin/create-webapp" "$@"
+          fi
+        '';
+      };
+
+      webappDesktop = pkgs.makeDesktopItem {
+        name = "webapp-manager";
+        desktopName = "WebApp Manager";
+        genericName = "Web Application Manager";
+        comment = "Create, edit, and manage standalone desktop web applications";
+        icon = "internet-web-browser";
+        exec = "webapp-manager";
+        categories = [ "Utility" "Network" ];
+        keywords = [ "webapp" "create" "pwa" "browser" "web" "app" ];
+        terminal = false;
+      };
     in {
       environment.systemPackages = [
         createWebapp
         webappAlias
+        webappManager
+        webappDesktop
       ];
     };
 }
