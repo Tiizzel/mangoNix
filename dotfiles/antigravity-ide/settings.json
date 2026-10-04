@@ -23,5 +23,6 @@
   "window.menuBarVisibility": "compact",
   "python.languageServer": "Default",
   "clangd.path": "/home/tiizzel/.config/Antigravity IDE/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/22.1.6/clangd_22.1.6/bin/clangd",
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "task.slowProviderWarning": true
 }

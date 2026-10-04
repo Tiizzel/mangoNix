@@ -3,12 +3,12 @@
   "logo": {
     "type": "small",
     "color": {
-      "1": "#b3c5ff",
-      "2": "#e1bbdc",
-      "3": "#b3c5ff",
-      "4": "#e1bbdc",
-      "5": "#b3c5ff",
-      "6": "#e1bbdc"
+      "1": "#f1be6d",
+      "2": "#b6cea3",
+      "3": "#f1be6d",
+      "4": "#b6cea3",
+      "5": "#f1be6d",
+      "6": "#b6cea3"
     },
     "padding": {
       "top": 1,
@@ -19,8 +19,8 @@
   "display": {
     "separator": " ",
     "color": {
-      "keys": "#b3c5ff",
-      "title": "#e1bbdc"
+      "keys": "#f1be6d",
+      "title": "#b6cea3"
     },
     "percent": {
       "color": {

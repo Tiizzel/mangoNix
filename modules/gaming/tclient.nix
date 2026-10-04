@@ -14,7 +14,14 @@
     xdg.desktopEntries.tclient = {
       name = "TaterClient";
       genericName = "Teeworlds / DDNet Client";
-      exec = "systemd-cat -t tclient TaterClient-DDNet";
+      exec = "${pkgs.writeShellScript "tclient-launcher" ''
+        systemctl --user start libretranslate.service tclient-proxy.service
+        cleanup() {
+          systemctl --user stop tclient-proxy.service libretranslate.service
+        }
+        trap cleanup EXIT INT TERM
+        systemd-cat -t tclient TaterClient-DDNet
+      ''}";
       icon = "ddnet";
       categories = [ "Game" ];
       terminal = false;
@@ -34,9 +41,6 @@
         Environment = [ "LT_UPDATE_MODELS=true" ];
         Restart = "on-failure";
       };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
     };
 
     # HTTPS proxy to fulfill TaterClient's HTTPS requirement & filter German messages
@@ -54,9 +58,6 @@
           "PROXY_PORT=5001"
         ];
         Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
       };
     };
   };

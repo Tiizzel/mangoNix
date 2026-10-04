@@ -3,6 +3,7 @@
     environment.systemPackages = with pkgs; [
       antigravity-ide
       nixfmt
+      antigravity-cli
     ];
   };
 }

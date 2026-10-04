@@ -62,24 +62,24 @@ def extract_language_prefix(text):
     original_text = text
     text = text.strip()
     parts = text.split(":")
-    
+
     for i in range(len(parts) - 1):
         potential_lang = parts[i].strip().lower()
         if potential_lang in LANGUAGE_LOOKUP:
             target_lang = LANGUAGE_LOOKUP[potential_lang]
-            
+
             if i > 0:
                 preserved_prefix = ":".join(parts[:i]) + ": "
             else:
                 preserved_prefix = ""
-            
+
             cleaned_text = ":".join(parts[i+1:]).strip()
-            
+
             if (cleaned_text.startswith('"') and cleaned_text.endswith('"')) or (cleaned_text.startswith("'") and cleaned_text.endswith("'")):
                 cleaned_text = cleaned_text[1:-1].strip()
-                
+
             return target_lang, preserved_prefix, cleaned_text
-            
+
     return None, "", original_text
 
 def is_german(text):
@@ -138,7 +138,7 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                         resp_bytes = resp.read()
                         sys.stderr.write(f"[PROXY] LibreTranslate returned: {resp_bytes.decode('utf-8', 'ignore')}\n")
                         sys.stderr.flush()
-                        
+
                         try:
                             resp_json = json.loads(resp_bytes.decode("utf-8"))
                             if "translatedText" in resp_json:
@@ -146,7 +146,7 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                             resp_bytes = json.dumps(resp_json).encode("utf-8")
                         except Exception as e:
                             sys.stderr.write(f"[PROXY] Error re-injecting prefix: {e}\n")
-                            
+
                         self.send_response(resp.status)
                         for k, v in resp.headers.items():
                             if k.lower() not in ("content-length", "transfer-encoding"):

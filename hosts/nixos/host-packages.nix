@@ -4,5 +4,6 @@
     # Add host-specific packages here, for example:
     # lact             # GPU control / overclocking
     # nvtopPackages.amd
+    qbittorrent
   ];
 }

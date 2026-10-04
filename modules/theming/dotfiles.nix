@@ -14,6 +14,7 @@
       ".config/ghostty".source = link "${dotDir}/ghostty";
       ".config/gtk-3.0".source = link "${dotDir}/gtk-3.0";
       ".config/gtk-4.0".source = link "${dotDir}/gtk-4.0";
+      ".config/hypr".source = link "${dotDir}/hypr";
       ".config/kitty".source = link "${dotDir}/kitty";
       ".config/mango".source = link "${dotDir}/mango";
       ".config/matugen".source = link "${dotDir}/matugen";

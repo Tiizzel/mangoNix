@@ -15,6 +15,7 @@
         color-scheme = "prefer-dark";
         gtk-theme = "adw-gtk3-dark";
         icon-theme = "Papirus-Dark";
+        font-name = "JetBrainsMono Nerd Font";
       };
     };
   };

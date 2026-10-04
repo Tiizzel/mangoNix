@@ -55,3 +55,16 @@ PR #204 solves this by:
 - [ ] **SceneFX PR #204**: Vulkan blur merged into `wlrfx/scenefx`.
 - [ ] **MangoWM Upstream**: MangoWM updates dependencies to the new SceneFX Vulkan release, re-enabling blur on Vulkan sessions.
 - [ ] **mangoNix Flake**: Update flake input `mangowm` to the merged release.
+
+---
+
+## 5. Automated Monitoring
+
+A **systemd user timer** ([`scenefx-monitor.nix`](../modules/system/scenefx-monitor.nix)) checks PRs #192 and #204 weekly (every Monday at 12:00, with `Persistent=true` for post-boot catch-up).
+
+When a PR is merged, it:
+1. Sends a **desktop notification** via `notify-send`
+2. Automatically checks the corresponding checkbox in section 4 above
+
+**Manual test:** `systemctl --user start scenefx-pr-check.service`
+**Timer status:** `systemctl --user list-timers scenefx-pr-check.timer`

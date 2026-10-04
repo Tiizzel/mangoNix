@@ -3,7 +3,7 @@
 # -----------------------------------------------------
 
 alias asdf='journalctl -t tclient | fzf --no-sort'
-alias gemini='agy'
+#alias gemini='agy'
 
 # -----------------------------------------------------
 # General

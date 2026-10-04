@@ -15,14 +15,25 @@
       url = "github:mangowm/mango/wl-only";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    helium-browser = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     sops-nix.url = "github:Mic92/sops-nix";
-    noctalia.url = "github:noctalia-dev/noctalia/cachix";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/cachix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
