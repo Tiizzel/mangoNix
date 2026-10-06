@@ -1,26 +1,31 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  // Custom NixOS snowflake: each of the six lambdas ($1-$6, clockwise from
+  // top-left) gets its own Material You role, forming a gradient that flows
+  // around the flake: light primary → primary → secondary → tertiary →
+  // light tertiary → light secondary → back to light primary.
   "logo": {
-    "type": "small",
+    "type": "data",
+    "source": "          $1▗▄▄▄       $2▗▄▄▄▄    ▄▄▄▖\n          $1▜███▙       $2▜███▙  ▟███▛\n           $1▜███▙       $2▜███▙▟███▛\n            $1▜███▙       $2▜██████▛\n     $1▟█████████████████▙ $2▜████▛     $3▟▙\n    $1▟███████████████████▙ $2▜███▙    $3▟██▙\n           $6▄▄▄▄▖           $2▜███▙  $3▟███▛\n          $6▟███▛             $2▜██▛ $3▟███▛\n         $6▟███▛               $2▜▛ $3▟███▛\n$6▟███████████▛                  $3▟██████████▙\n$6▜██████████▛                  $3▟███████████▛\n      $6▟███▛ $5▟▙               $3▟███▛\n     $6▟███▛ $5▟██▙             $3▟███▛\n    $6▟███▛  $5▜███▙           $3▝▀▀▀▀\n    $6▜██▛    $5▜███▙ $4▜██████████████████▛\n     $6▜▛     $5▟████▙ $4▜████████████████▛\n           $5▟██████▙         $4▜███▙\n          $5▟███▛▜███▙         $4▜███▙\n         $5▟███▛  ▜███▙         $4▜███▙\n         $5▝▀▀▀    ▀▀▀▀▘         $4▀▀▀▘\n\n$6────────────  $1m a n g o $3N i x  $4────────────",
     "color": {
-      "1": "#f1be6d",
-      "2": "#b6cea3",
-      "3": "#f1be6d",
-      "4": "#b6cea3",
-      "5": "#f1be6d",
-      "6": "#b6cea3"
+      "1": "#83d2e3",
+      "2": "#bcc5eb",
+      "3": "#83d2e3",
+      "4": "#bcc5eb",
+      "5": "#83d2e3",
+      "6": "#bcc5eb"
     },
     "padding": {
       "top": 1,
-      "left": 1,
-      "right": 2
+      "left": 2,
+      "right": 3
     }
   },
   "display": {
     "separator": " ",
     "color": {
-      "keys": "#f1be6d",
-      "title": "#b6cea3"
+      "keys": "#83d2e3",
+      "title": "#bcc5eb"
     },
     "percent": {
       "color": {

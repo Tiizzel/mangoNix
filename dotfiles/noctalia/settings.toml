@@ -45,7 +45,7 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 
     [idle.behavior.screen-off]
     action = "screen_off"
-    enabled = true
+    enabled = false
     timeout = 180.0
 
 [lockscreen]
@@ -252,13 +252,13 @@ directory = "/home/tiizzel/Pictures/Wallpapers"
     recursive = true
 
     [wallpaper.default]
-    path = "/home/tiizzel/Pictures/Wallpapers/aishot-2152.jpg"
+    path = "/home/tiizzel/Pictures/Wallpapers/aishot-821.jpg"
 
     [wallpaper.last]
-    path = "/home/tiizzel/Pictures/Wallpapers/aishot-2152.jpg"
+    path = "/home/tiizzel/Pictures/Wallpapers/aishot-821.jpg"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/tiizzel/Pictures/Wallpapers/aishot-2152.jpg"
+    path = "/home/tiizzel/Pictures/Wallpapers/aishot-821.jpg"
 
 [widget.clock]
 capsule = true

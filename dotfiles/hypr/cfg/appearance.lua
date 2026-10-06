@@ -7,7 +7,7 @@ hl.config({
     gaps_in = 4,
     gaps_out = 8,
     border_size = 2,
-    layout = "master",
+    layout = "scrolling",
     allow_tearing = true,
   },
   decoration = {

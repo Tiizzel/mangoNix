@@ -37,7 +37,7 @@
         Description = "LibreTranslate translation service for TaterClient";
       };
       Service = {
-        ExecStart = "${pkgs.libretranslate}/bin/libretranslate --host 127.0.0.1 --port 5000 --load-only en,de,ru,zh,fr,es,pl,uk,tr,ro --disable-web-ui";
+        ExecStart = "${pkgs.libretranslate}/bin/libretranslate --host 127.0.0.1 --port 5000 --load-only en,de,ru,zh,fr,es,it,pl,uk,tr,ro --disable-web-ui";
         Environment = [ "LT_UPDATE_MODELS=true" ];
         Restart = "on-failure";
       };
